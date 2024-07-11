@@ -1,0 +1,101 @@
+body{
+    background-color: #F5FBEF;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+    padding: 10px;
+}
+.logo{
+    display: flex;
+}
+
+.logo img{
+    height: 50px;
+}
+
+.ingreso{
+    display: flex;
+    font-size: 20px;
+}
+
+.ingreso button{
+    background-color: #84C318;
+    font-size: 20px;
+    height: 40px;
+    width: 150px;
+    font-weight: bolder;
+    justify-content: space-between;
+}
+
+.ingreso button:hover{
+    background-color: black;
+    color:#84C318;
+}
+
+.navbar a{
+    color:black;
+    font-weight: 600;
+    padding-right: 10px;
+}
+
+.navbar a:hover{
+    color:#84C318;
+}
+
+.escudo img{
+    height: 250px;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.escudo{
+    display: flex;
+    justify-content: center;
+    bottom: auto;
+}
+
+.nombre{
+    display: flex;
+    justify-content: center;
+    padding-top: 2%;
+}
+
+.nombre h2{
+    color: #748B75;
+    font-weight: bolder;
+}
+
+.video{
+    display: flex;
+    justify-content:left;
+    justify-content: space-between;
+    padding-top: 2%;
+    padding-left: 5%;
+    padding-bottom: 2%;
+    height: 420px;
+}
+
+.historia{
+    justify-content: center;
+    justify-items: center;
+    padding: 2%;
+}
+
+.historia h3{
+    color: #503D42;
+    font-weight: bold;
+}
+
+footer{
+    justify-content: center;
+    display: flex;
+    background-color: #92AD94;
+}

@@ -1,0 +1,166 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 11/07/2024, 2:05:43 p. m.
+    Author     : USUARIO
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+body {
+    background-color: #F5FBEF;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.navbar a {
+    color: black;
+    font-weight: 600;
+    padding-right: 10px;
+}
+
+.nav-link.active {
+    background-color: #84C318;
+}
+
+.navbar a:hover {
+    color: #84C318;
+}
+
+.perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 50px;
+    padding-left: 50px;
+}
+
+.perfil i {
+    color: #84C318;
+    font-size: 30px;
+}
+
+.perfil a {
+    color: #84C318;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cuadro {
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.contenedor{
+    justify-items: center;
+    justify-content: center;
+}
+
+.contenedor h1{
+    text-align: center;
+    color: #503D42;
+    font-family: "Oswald", sans-serif;
+    font-weight: 800;
+}
+
+.tabla{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.table{
+    text-align: center;
+    border-color: #503D42;
+    font-weight: 500;
+    margin: 0px auto;
+    width: max-content;
+}
+
+.table th{
+    background: #dfd4d8;
+}
+
+.table tr:nth-child(odd) td{
+    background-color: #92AD94;
+}
+
+.table a{
+    color: #503D42;
+}
+
+.table a:hover{
+    color: green;
+}
+
+.row {
+    justify-content: center;
+    align-content: center;
+    align-items: self-end;
+    padding-right: 30%;
+    padding-left: 30%;
+    padding-bottom: 1%;
+}
+
+.col-3{
+    width: auto;
+    margin: 0px auto;
+    padding-top: 2%;
+}
+
+.col-2{
+    width: auto;
+    margin: 0px auto;
+    padding-top: 2%;
+}
+
+.col-3 button{
+    background-color: #503D42;
+    color: #F5FBEF;
+    font-weight: bold;
+}
+
+.col-3 button:hover{
+    background-color: #F5FBEF;
+    color: #503D42;
+    border-color: #503D42;
+}
+
+.col-2 input:focus{
+    border-color: #84C318;
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px #84C318;
+    outline: 0 none;
+}
+
+#guardar{
+    background-color: #748B75;
+    color: #F5FBEF;
+    font-weight: bold;
+}
+
+#guardar:hover{
+    background-color: #F5FBEF;
+    color: #748B75;
+    border-color: #748B75;
+}
+
+#mycheck {
+    accent-color: #84C318;
+  }
+
