@@ -11,15 +11,15 @@ package Modelo;
 public class Curso {
     int id;
     String codigo;
-    int cant_edtud;
+    int cant_estud;
 
     public Curso() {
     }
 
-    public Curso(int id, String codigo, int cant_edtud) {
+    public Curso(int id, String codigo, int cant_estud) {
         this.id = id;
         this.codigo = codigo;
-        this.cant_edtud = cant_edtud;
+        this.cant_estud = cant_estud;
     }
 
     public int getId() {
@@ -38,13 +38,13 @@ public class Curso {
         this.codigo = codigo;
     }
 
-    public int getCant_edtud() {
-        return cant_edtud;
+    public int getCant_estud() {
+        return cant_estud;
     }
 
-    public void setCant_edtud(int cant_edtud) {
-        this.cant_edtud = cant_edtud;
+    public void setCant_estud(int cant_estud) {
+        this.cant_estud = cant_estud;
     }
-    
+
     
 }

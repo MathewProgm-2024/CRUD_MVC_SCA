@@ -8,36 +8,44 @@ package Modelo;
  *
  * @author USUARIO
  */
-public class Estud_Asign {
+public class Calificaciones {
     int id;
     int id_estud;
     int id_asign;
+    String periodo;
     double nota1;
     double nota2;
     double nota3;
     double nota4;
     double nota5;
-    double nota_parcial;
+    double nota_parc;
     double coev;
     double autoev;
     double nota_fin;
-
-    public Estud_Asign() {
+    String nomb_estud;
+    String apell_estud;
+    String asign;
+    
+    public Calificaciones() {
     }
 
-    public Estud_Asign(int id, int id_estud, int id_asign, double nota1, double nota2, double nota3, double nota4, double nota5, double nota_parcial, double coev, double autoev, double nota_fin) {
+    public Calificaciones(int id, int id_estud, int id_asign, String periodo, double nota1, double nota2, double nota3, double nota4, double nota5, double nota_parc, double coev, double autoev, double nota_fin, String nomb_estud, String apell_estud) {
         this.id = id;
         this.id_estud = id_estud;
         this.id_asign = id_asign;
+        this.periodo = periodo;
         this.nota1 = nota1;
         this.nota2 = nota2;
         this.nota3 = nota3;
         this.nota4 = nota4;
         this.nota5 = nota5;
-        this.nota_parcial = nota_parcial;
+        this.nota_parc = nota_parc;
         this.coev = coev;
         this.autoev = autoev;
         this.nota_fin = nota_fin;
+        this.nomb_estud = nomb_estud;
+        this.apell_estud = apell_estud;
+        this.asign = asign;
     }
 
     public int getId() {
@@ -62,6 +70,14 @@ public class Estud_Asign {
 
     public void setId_asign(int id_asign) {
         this.id_asign = id_asign;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
     }
 
     public double getNota1() {
@@ -104,12 +120,12 @@ public class Estud_Asign {
         this.nota5 = nota5;
     }
 
-    public double getNota_parcial() {
-        return nota_parcial;
+    public double getNota_parc() {
+        return nota_parc;
     }
 
-    public void setNota_parcial(double nota_parcial) {
-        this.nota_parcial = nota_parcial;
+    public void setNota_parc(double nota_parc) {
+        this.nota_parc = nota_parc;
     }
 
     public double getCoev() {
@@ -135,6 +151,32 @@ public class Estud_Asign {
     public void setNota_fin(double nota_fin) {
         this.nota_fin = nota_fin;
     }
+
+    public String getNomb_estud() {
+        return nomb_estud;
+    }
+
+    public void setNomb_estud(String nomb_estud) {
+        this.nomb_estud = nomb_estud;
+    }
+
+    public String getApell_estud() {
+        return apell_estud;
+    }
+
+    public void setApell_estud(String apell_estud) {
+        this.apell_estud = apell_estud;
+    }
+
+    public String getAsign() {
+        return asign;
+    }
+
+    public void setAsign(String asign) {
+        this.asign = asign;
+    }
+
     
+
     
 }

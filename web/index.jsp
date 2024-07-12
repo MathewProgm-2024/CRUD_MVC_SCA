@@ -32,16 +32,16 @@
                                 <a href="" class="nav-link">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">Asignaturas</a>
+                                <a href="Controlador_Asign?accion=listar" class="nav-link">Asignaturas</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link active">Cursos</a>
+                                <a href="Controlador_Curso?accion=listar" class="nav-link active">Cursos</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">Estudiantes</a>
+                                <a href="Controlador_Estud?accion=listar" class="nav-link">Estudiantes</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">Profesores</a>
+                                <a href="Controlador_Prof?accion=listar" class="nav-link">Profesores</a>
                             </li>
                         </ul>
                         <div class="logo">

@@ -29,6 +29,7 @@ public class Estudiante {
     String usuario;
     String contras;
     int id_curso;
+    String nomb_curso;
 
     public Estudiante() {
     }
@@ -53,6 +54,7 @@ public class Estudiante {
         this.usuario = usuario;
         this.contras = contras;
         this.id_curso = id_curso;
+        this.nomb_curso = nomb_curso;
     }
 
     public int getId() {
@@ -205,6 +207,14 @@ public class Estudiante {
 
     public void setId_curso(int id_curso) {
         this.id_curso = id_curso;
+    }
+
+    public String getNomb_curso() {
+        return nomb_curso;
+    }
+
+    public void setNomb_curso(String nomb_curso) {
+        this.nomb_curso = nomb_curso;
     }
     
     
