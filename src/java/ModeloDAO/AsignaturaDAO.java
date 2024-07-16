@@ -55,7 +55,17 @@ public class AsignaturaDAO implements CRUD_Asignatura{
 
     @Override
     public boolean add(Asignatura asign) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "INSERT INTO asignaturas(nombre, grado, id_prof) values('"+asign.getNombre()+"', '"+asign.getGrado()+"', '"+asign.getId_prof()+"')";
+        try {
+            con = cn.getConection();
+            st = con.createStatement();
+            st.executeUpdate(sql);
+            
+        } catch (Exception e) {
+            
+        }
+        
+        return false;
     }
 
     @Override

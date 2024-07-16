@@ -68,12 +68,16 @@ public class Controlador_Curso extends HttpServlet {
             String action=request.getParameter("accion");
             if(action.equalsIgnoreCase("listar")){
                 acceso=listar;
-            }else if (action.equalsIgnoreCase("add")){
+            }else if(action.equalsIgnoreCase("add")){
                 acceso=add;
             }else if(action.equalsIgnoreCase("Agregar")){
-                String codigo = request.getParameter("txtCodigo");
+                String codigo = request.getParameter(String.valueOf("txtCodigo"));
+
+                c.setCodigo(codigo);
+                c.setCant_estud(0);
                 
-                
+                dao.add(c);
+                acceso=listar;
             }
             RequestDispatcher vista=request.getRequestDispatcher(acceso);
             vista.forward(request, response);

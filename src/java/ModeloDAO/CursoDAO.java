@@ -56,11 +56,12 @@ public class CursoDAO implements CRUD_Curso {
 
     @Override
     public boolean add(Curso curso) {
-        String sql = "INSERT INTO cursos(codigo, cant_estud) values('" + curso.getCodigo() + "','" + curso.getCant_estud() + "')";
+        String sql = "INSERT INTO cursos(codigo) values('"+curso.getCodigo()+"')";
         try {
             con = cn.getConection();
             st = con.createStatement();
-            rs = st.executeQuery(sql);
+            st.executeUpdate(sql);
+            
         } catch (Exception e) {
             
         }

@@ -4,6 +4,8 @@
  */
 package Modelo;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  *
  * @author USUARIO
@@ -26,6 +28,26 @@ public class Profesor {
     String num_lic;
     String usuario;
     String contras;
+    String nomb_asign;
+    String grado_asign;
+    
+    public static String cadenaAleatoria(int longitud) {
+        // El banco de caracteres
+        String banco = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        // La cadena en donde iremos agregando un carácter aleatorio
+        String cadena = "";
+        for (int x = 0; x < longitud; x++) {
+            int indiceAleatorio = numeroAleatorioEnRango(0, banco.length() - 1);
+            char caracterAleatorio = banco.charAt(indiceAleatorio);
+            cadena += caracterAleatorio;
+        }
+        return cadena;
+    }
+
+    public static int numeroAleatorioEnRango(int minimo, int maximo) {
+        // nextInt regresa en rango pero con límite superior exclusivo, por eso sumamos 1
+        return ThreadLocalRandom.current().nextInt(minimo, maximo + 1);
+    }
 
     public Profesor() {
     }
@@ -48,6 +70,8 @@ public class Profesor {
         this.num_lic = num_lic;
         this.usuario = usuario;
         this.contras = contras;
+        this.nomb_asign = nomb_asign;
+        this.grado_asign = grado_asign;
     }
 
     public int getId() {
@@ -184,6 +208,22 @@ public class Profesor {
 
     public void setContras(String contras) {
         this.contras = contras;
+    }
+
+    public String getNomb_asign() {
+        return nomb_asign;
+    }
+
+    public void setNomb_asign(String nomb_asign) {
+        this.nomb_asign = nomb_asign;
+    }
+
+    public String getGrado_asign() {
+        return grado_asign;
+    }
+
+    public void setGrado_asign(String grado_asign) {
+        this.grado_asign = grado_asign;
     }
     
     

@@ -49,7 +49,7 @@
                                 <a href="Controlador_Estud?accion=listar" class="nav-link active">Estudiantes</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">Profesores</a>
+                                <a href="Controlador_Prof?accion=listar" class="nav-link">Profesores</a>
                             </li>
                         </ul>
                         <div class="logo">
@@ -71,7 +71,7 @@
                 <input type="text" class="form-control" id="buscar" placeholder="Buscar" onkeyup="filtrar()">
             </div>
             <div class="col-3">
-                <button><i class="bi bi-plus-square"></i> Agregar nuevo estudiante</button>
+                <a href="Controlador_Estud?accion=add" class="btn"><i class="bi bi-plus-square"></i> Agregar nuevo estudiante</a>
             </div>
         </form>
     </div>
@@ -95,7 +95,7 @@
                     int i=0;
                     while (iter.hasNext()) {
                         estud = iter.next();
-                        i=+1;
+                        i++;
 
                 %>
                 <tr>

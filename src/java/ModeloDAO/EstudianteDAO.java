@@ -10,9 +10,12 @@ import Modelo.Curso;
 import Modelo.Estudiante;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -55,7 +58,16 @@ public class EstudianteDAO implements CRUD_Estudiante{
 
     @Override
     public boolean add(Estudiante estud) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "INSERT INTO estudiantes (nombre, apell, num_doc, fech_nac, ciud_nac, barr_res, direc_res, edad, genero, rh, eps, telefono, correo, nomb_acud, apell_acu, usuario, contras, id_curso) values('" + estud.getNombre() + "', '" + estud.getApell() + "', '" + estud.getNum_doc()+ "', '" + estud.getFech_nac() + "', '" + estud.getCiud_nac() + "', '" + estud.getBarr_res() + "', '" + estud.getDirec_res() + "', '" + estud.getEdad() + "', '" + estud.getGenero() + "', '" + estud.getRh() + "', '" + estud.getEps() + "', '" + estud.getTelefono() + "', '" + estud.getCorreo() + "', '" + estud.getNomb_acud() + "', '" + estud.getUsuario() + "', '" + estud.getContras() + "', '" + estud.getApell_acu() + "',  '" + estud.getId_curso()+ "')";
+        
+        try {
+            con = cn.getConection();
+            st = con.createStatement();
+            st.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProfesorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     @Override

@@ -4,6 +4,8 @@
  */
 package Controlador;
 
+import Modelo.Asignatura;
+import ModeloDAO.AsignaturaDAO;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,6 +23,8 @@ public class Controlador_Asign extends HttpServlet {
     String listar="vistas/asignaturas/listar.jsp";
     String add="vistas/asignaturas/agregar.jsp";
     String editar="vistas/asignaturas/editar.jsp";
+    Asignatura a = new Asignatura();
+    AsignaturaDAO dao = new AsignaturaDAO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -63,6 +67,19 @@ public class Controlador_Asign extends HttpServlet {
         String acceso="";
             String action=request.getParameter("accion");
             if(action.equalsIgnoreCase("listar")){
+                acceso=listar;
+            }else if(action.equalsIgnoreCase("add")){
+                acceso=add;
+            }else if(action.equalsIgnoreCase("Agregar")){
+                String nombre = request.getParameter("txtNomb");
+                String grado = String.valueOf(request.getParameter("txtGrado"));
+                int id_prof = Integer.parseInt(request.getParameter("txtProf"));
+                
+                a.setNombre(nombre);
+                a.setGrado(grado);
+                a.setId_prof(id_prof);
+                
+                dao.add(a);
                 acceso=listar;
             }
             RequestDispatcher vista=request.getRequestDispatcher(acceso);

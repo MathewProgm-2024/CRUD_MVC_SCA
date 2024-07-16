@@ -70,7 +70,7 @@
         </div>
         <form class="row">
             <div class="col-3">
-                <button><i class="bi bi-plus-square"></i> Agregar nuevo profesor</button>
+                <a class="btn" href="Controlador_Prof?accion=add"><i class="bi bi-plus-square"></i> Agregar nuevo profesor</a>
             </div>
             <div class="col-2">
                 <label for="buscar" class="form-label">Buscar Profesor <i class="bi bi-search"></i></label>
@@ -92,21 +92,21 @@
             </thead>
             <tbody class="table-group-divider">
                 <%
-                    AsignaturaDAO dao = new AsignaturaDAO();
-                    List<Asignatura> list = dao.listar();
-                    Iterator<Asignatura> iter = list.iterator();
-                    Asignatura asign = null;
+                    ProfesorDAO dao = new ProfesorDAO();
+                    List<Profesor> list = dao.listar();
+                    Iterator<Profesor> iter = list.iterator();
+                    Profesor prof = null;
                     int i=0;
                     while (iter.hasNext()) {
-                        asign = iter.next();
-                        i=+1;
+                        prof = iter.next();
+                        i++;
 
                 %>
                 <tr>
                     <td><%= i %></td>
-                    <td><%= asign.getNomb_prof() %> <%= asign.getApell_prof() %></td>
-                    <td><%= asign.getNombre() %></td>
-                    <td><%= asign.getGrado() %></td>
+                    <td><%= prof.getNombre() %> <%= prof.getApell() %></td>
+                    <td><%= prof.getNomb_asign() %></td>
+                    <td><%= prof.getGrado_asign() %></td>
                     <td>
                         <a href="">Ver Detalle</a>
                     </td>
