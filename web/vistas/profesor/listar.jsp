@@ -108,7 +108,7 @@
                     <td><%= prof.getNomb_asign() %></td>
                     <td><%= prof.getGrado_asign() %></td>
                     <td>
-                        <a href="">Ver Detalle</a>
+                        <a href="Controlador_Prof?accion=editar&id=<%=prof.getId()%>">Editar</a>
                     </td>
                     <td>
                         <a href="">Eliminar</a>

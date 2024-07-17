@@ -105,7 +105,7 @@
                             <a href="Controlador_CalifCurs?accion=listar">Ver Calificaciones</a>
                         </td>
                         <td>
-                            <a href="">Editar</a>
+                            <a href="Controlador_Curso?accion=editar&id=<%= curs.getId() %>">Editar</a>
                         </td>
                         <td>
                             <a href="">Vaciar</a>

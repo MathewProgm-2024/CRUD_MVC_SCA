@@ -87,21 +87,21 @@ public class Controlador_Prof extends HttpServlet {
                 String ciud_nac = request.getParameter("txtCiudNac");
                 String barr_res = request.getParameter("txtBarrRes");
                 String direc_res = request.getParameter("txtDirRes");
-                
+
                 //Formato inicial.
                 SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
                 String fechaInicio = fech_nac;
-                Date d = formato.parse(fechaInicio);                
+                Date d = formato.parse(fechaInicio);
                 //Aplica formato requerido.
                 formato.applyPattern("dd-MM-yyyy");
-                String nuevoFormato = formato.format(d);                
+                String nuevoFormato = formato.format(d);
                 DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 LocalDate fechaNac = LocalDate.parse(nuevoFormato, fmt);
                 LocalDate ahora = LocalDate.now();
                 Period periodo = Period.between(fechaNac, ahora);
-                
+
                 String edad = String.valueOf(periodo.getYears());
-                
+
                 String genero = request.getParameter("txtgene");
                 String rh = request.getParameter("txtRh");
                 String eps = request.getParameter("txtEps");
@@ -109,10 +109,10 @@ public class Controlador_Prof extends HttpServlet {
                 String correo = request.getParameter("txtCorreo");
                 String num_lic = request.getParameter("txtNumLic");
                 String usuario = request.getParameter("txtUsuario");
-                
+
                 int longitud = 10;
                 String contras = p.cadenaAleatoria(longitud);
-                
+
                 p.setNombre(nombre);
                 p.setApell(apell);
                 p.setNum_doc(num_doc);
@@ -129,12 +129,54 @@ public class Controlador_Prof extends HttpServlet {
                 p.setNum_lic(num_lic);
                 p.setUsuario(usuario);
                 p.setContras(contras);
-                
+
                 dao.add(p);
                 acceso = listar;
             } catch (ParseException ex) {
                 Logger.getLogger(Controlador_Prof.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else if (action.equalsIgnoreCase("editar")) {
+            request.setAttribute("idprof", request.getParameter("id"));
+            acceso = editar;
+        } else if (action.equalsIgnoreCase("Actualizar")) {
+            int id = Integer.parseInt(request.getParameter("txtId"));
+            String nombre = request.getParameter("txtNomb");
+            String apell = request.getParameter("txtApell");
+            String num_doc = request.getParameter("txtDoc");
+            String fech_nac = request.getParameter("txtFechNac");
+            String ciud_nac = request.getParameter("txtCiudNac");
+            String barr_res = request.getParameter("txtBarrRes");
+            String direc_res = request.getParameter("txtDirRes");
+            String edad = request.getParameter("txtEdad");
+            String genero = request.getParameter("txtGene");
+            String rh = request.getParameter("txtRh");
+            String eps = request.getParameter("txtEps");
+            String telefono = request.getParameter("txtTel");
+            String correo = request.getParameter("txtCorreo");
+            String num_lic = request.getParameter("txtNumLic");
+            String usuario = request.getParameter("txtUsuario");
+            String contras = request.getParameter("txtContras");
+            
+            p.setId(id);
+            p.setNombre(nombre);
+            p.setApell(apell);
+            p.setNum_doc(num_doc);
+            p.setFech_nac(fech_nac);
+            p.setCiud_nac(ciud_nac);
+            p.setBarr_res(barr_res);
+            p.setDirec_res(direc_res);
+            p.setEdad(edad);
+            p.setGenero(genero);
+            p.setRh(rh);
+            p.setEps(eps);
+            p.setTelefono(telefono);
+            p.setCorreo(correo);
+            p.setNum_lic(num_lic);
+            p.setUsuario(usuario);
+            p.setContras(contras);
+            
+            dao.edit(p);
+            acceso=listar;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

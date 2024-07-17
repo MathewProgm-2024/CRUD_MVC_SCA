@@ -103,7 +103,7 @@
                     <td><%= estud.getNombre() %> <%= estud.getApell() %></td>
                     <td><%= estud.getNomb_curso() %></td>
                     <td>
-                        <a href="">Ver Detalle</a>
+                        <a href="Controlador_Estud?accion=editar&id=<%=estud.getId()%>">Ver Detalle</a>
                     </td>
                     <td>
                         <a href="">Eliminar</a>

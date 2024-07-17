@@ -79,7 +79,7 @@
                     </div>
                     <div class="col-3">
                         <label for="documento" class="form-label">Numero de documento</label>
-                        <input type="text" txt="txtDoc" class="form-control" id="documento" placeholder="Documento">
+                        <input type="text" name="txtDoc" class="form-control" id="documento" placeholder="Documento">
                     </div>
                     <div class="col-2">
                         <label for="nacimiento" class="form-label">Fecha de nacimiento</label>

@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.HashSet;
 
 /**
  *
@@ -80,6 +81,22 @@ public class Controlador_Asign extends HttpServlet {
                 a.setId_prof(id_prof);
                 
                 dao.add(a);
+                acceso=listar;
+            }else if(action.equalsIgnoreCase("editar")){
+                request.setAttribute("idasign",request.getParameter("id"));
+                acceso=editar;
+            }else if(action.equalsIgnoreCase("Actualizar")){
+                int id = Integer.parseInt(request.getParameter("txtId"));
+                String nombre = request.getParameter("txtNomb");
+                String grado = String.valueOf(request.getParameter("txtGrado"));
+                int id_prof = Integer.parseInt(request.getParameter("txtProf"));
+                
+                a.setId(id);                
+                a.setNombre(nombre);
+                a.setGrado(grado);
+                a.setId_prof(id_prof);
+                
+                dao.edit(a);
                 acceso=listar;
             }
             RequestDispatcher vista=request.getRequestDispatcher(acceso);

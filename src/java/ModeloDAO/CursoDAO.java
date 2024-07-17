@@ -51,27 +51,50 @@ public class CursoDAO implements CRUD_Curso {
 
     @Override
     public Curso list(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "SELECT * FROM cursos where id="+id;
+        try {
+            con = cn.getConection();
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                c.setId(rs.getInt("id"));
+                c.setCodigo(rs.getString("codigo"));
+                c.setCant_estud(rs.getInt("cant_estud"));
+            }
+        } catch (Exception e) {
+
+        }
+        return c;
     }
 
     @Override
     public boolean add(Curso curso) {
-        String sql = "INSERT INTO cursos(codigo) values('"+curso.getCodigo()+"')";
+        String sql = "INSERT INTO cursos(codigo) values('" + curso.getCodigo() + "')";
         try {
             con = cn.getConection();
             st = con.createStatement();
             st.executeUpdate(sql);
-            
+
         } catch (Exception e) {
-            
+
         }
-        
+
         return false;
     }
 
     @Override
     public boolean edit(Curso curso) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "UPDATE cursos set codigo=('" + curso.getCodigo() + "') where id=" + curso.getId();
+        try {
+            con = cn.getConection();
+            st = con.createStatement();
+            st.executeUpdate(sql);
+
+        } catch (Exception e) {
+
+        }
+
+        return false;
     }
 
     @Override

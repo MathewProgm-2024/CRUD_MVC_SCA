@@ -42,21 +42,21 @@ public class ProfesorDAO implements CRUD_Profesor {
                 prof.setId(rs.getInt("profesores.id"));
                 prof.setNombre(rs.getString("profesores.nombre"));
                 prof.setApell(rs.getString("profesores.apell"));
-                
+
                 String nomb_asign = rs.getString("asignaturas.nombre");
                 String grado_asign = rs.getString("asignaturas.grado");
-                
-               if ((nomb_asign==null)){
-                   prof.setNomb_asign("Aún no asignado");
-               }else{
-                   prof.setNomb_asign(nomb_asign);
-               }
-                
-               if(grado_asign==null){
-                   prof.setGrado_asign("Aún no asignado");
-               }else{
-                   prof.setGrado_asign(grado_asign);
-               }
+
+                if ((nomb_asign == null)) {
+                    prof.setNomb_asign("Aún no asignado");
+                } else {
+                    prof.setNomb_asign(nomb_asign);
+                }
+
+                if (grado_asign == null) {
+                    prof.setGrado_asign("Aún no asignado");
+                } else {
+                    prof.setGrado_asign(grado_asign);
+                }
 
                 list.add(prof);
             }
@@ -68,7 +68,34 @@ public class ProfesorDAO implements CRUD_Profesor {
 
     @Override
     public Profesor list(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "SELECT * FROM profesores";
+        try {
+            con = cn.getConection();
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                p.setId(rs.getInt("Id"));
+                p.setNombre(rs.getString("nombre"));
+                p.setApell(rs.getString("apell"));
+                p.setNum_doc(rs.getString("num_doc"));
+                p.setFech_nac(rs.getString("fech_nac"));
+                p.setCiud_nac(rs.getString("ciud_nac"));
+                p.setBarr_res(rs.getString("barr_res"));
+                p.setDirec_res(rs.getString("direc_res"));
+                p.setEdad(rs.getString("edad"));
+                p.setGenero(rs.getString("genero"));
+                p.setRh(rs.getString("rh"));
+                p.setEps(rs.getString("eps"));;
+                p.setTelefono(rs.getString("telefono"));
+                p.setCorreo(rs.getString("correo"));
+                p.setNum_lic(rs.getString("num_lic"));
+                p.setUsuario(rs.getString("usuario"));
+                p.setContras(rs.getString("contras"));
+            }
+        } catch (Exception e) {
+
+        }
+        return p;
     }
 
     @Override
@@ -86,7 +113,18 @@ public class ProfesorDAO implements CRUD_Profesor {
 
     @Override
     public boolean edit(Profesor prof) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "UPDATE profesores SET nombre='" + prof.getNombre() + "', apell='" + prof.getApell() + "', num_doc='" + prof.getNum_doc() + "', fech_nac='" + prof.getFech_nac() + "', ciud_nac='" + prof.getCiud_nac() + "', barr_res='" + prof.getBarr_res() + "', direc_res='" + prof.getDirec_res() + "', edad='" + prof.getEdad() + "', genero='" + prof.getGenero() + "', rh='" + prof.getRh() + "', eps='" + prof.getEps() + "', telefono='" + prof.getTelefono() + "', correo='" + prof.getCorreo() + "', num_lic='" + prof.getNum_lic() + "', usuario='" + prof.getUsuario() + "', contras='" + prof.getContras() + "' WHERE id=" + prof.getId();
+
+        try {
+            con = cn.getConection();
+            st = con.createStatement();
+            st.executeUpdate(sql);
+
+        } catch (Exception e) {
+
+        }
+
+        return false;
     }
 
     @Override

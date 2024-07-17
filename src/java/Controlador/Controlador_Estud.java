@@ -102,7 +102,7 @@ public class Controlador_Estud extends HttpServlet {
 
                 String edad = String.valueOf(periodo.getYears());
 
-                String genero = request.getParameter("txtgene");
+                String genero = request.getParameter("txtGen");
                 String rh = request.getParameter("txtRh");
                 String eps = request.getParameter("txtEps");
                 int id_curso = Integer.parseInt(request.getParameter("txtCurso"));
@@ -113,7 +113,7 @@ public class Controlador_Estud extends HttpServlet {
                 String usuario = request.getParameter("txtUsuario");
                 int longitud = 10;
                 String contras = e.cadenaAleatoria(longitud);
-                
+
                 e.setNombre(nombre);
                 e.setApell(apell);
                 e.setNum_doc(num_doc);
@@ -132,13 +132,60 @@ public class Controlador_Estud extends HttpServlet {
                 e.setUsuario(usuario);
                 e.setContras(contras);
                 e.setId_curso(id_curso);
-                
+
                 dao.add(e);
-                acceso=listar;
-                
+                acceso = listar;
+
             } catch (ParseException ex) {
                 Logger.getLogger(Controlador_Estud.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else if (action.equalsIgnoreCase("editar")) {
+            request.setAttribute("idestud", request.getParameter("id"));
+            acceso = editar;
+        } else if (action.equalsIgnoreCase("Actualizar")) {
+            
+            int id = Integer.parseInt(request.getParameter("txtId"));
+            String nombre = request.getParameter("txtNomb");
+            String apell = request.getParameter("txtApell");
+            String num_doc = request.getParameter("txtDoc");
+            String fech_nac = request.getParameter("txtFechNac");
+            String ciud_nac = request.getParameter("txtCiudNac");
+            String barr_res = request.getParameter("txtBarrRes");
+            String direc_res = request.getParameter("txtDirRes");
+            String edad = request.getParameter("txtEdad");
+            String genero = request.getParameter("txtGen");
+            String rh = request.getParameter("txtRh");
+            String eps = request.getParameter("txtEps");
+            int id_curso = Integer.parseInt(request.getParameter("txtCurso"));
+            String nomb_acud = request.getParameter("txtNombAcud");
+            String apell_acud = request.getParameter("txtApellAcud");
+            String telefono = request.getParameter("txtTel");
+            String correo = request.getParameter("txtCorreo");
+            String usuario = request.getParameter("txtUsuario");
+            String contras = request.getParameter("txtContras");
+            
+            e.setId(id);
+            e.setNombre(nombre);
+            e.setApell(apell);
+            e.setNum_doc(num_doc);
+            e.setFech_nac(fech_nac);
+            e.setCiud_nac(ciud_nac);
+            e.setBarr_res(barr_res);
+            e.setDirec_res(direc_res);
+            e.setEdad(edad);
+            e.setGenero(genero);
+            e.setRh(rh);
+            e.setEps(eps);
+            e.setNomb_acud(nomb_acud);
+            e.setApell_acu(apell_acud);
+            e.setTelefono(telefono);
+            e.setCorreo(correo);
+            e.setUsuario(usuario);
+            e.setContras(contras);
+            e.setId_curso(id_curso);
+            
+            dao.edit(e);
+            acceso = listar;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

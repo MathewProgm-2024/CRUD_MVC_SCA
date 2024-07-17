@@ -113,7 +113,10 @@
                             <button type="submit" name="accion" value="Agregar"><i class="bi bi-floppy2-fill"></i> Agregar</button>
                         </div>
                         <div class="col-2">
-                            <button>Limpiar campos</button>
+                            <button type="reset">Limpiar campos</button>
+                        </div>
+                        <div class="col-3">
+                            <a class="btn" href="Controlador_Asign?accion=listar"><i class="bi bi-arrow-left-square"></i> Regresar</a>
                         </div>
                     </div>
                 </form>

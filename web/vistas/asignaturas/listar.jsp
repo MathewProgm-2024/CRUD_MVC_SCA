@@ -105,7 +105,7 @@
                     <td><%= asign.getNomb_prof() %> <%= asign.getApell_prof() %></td>
                     <td><%= asign.getGrado() %></td>
                     <td>
-                        <a href="">Ver Detalle</a>
+                        <a href="Controlador_Asign?accion=editar&id=<%=asign.getId()%>">Editar</a>
                     </td>
                     <td>
                         <a href="">Eliminar</a>

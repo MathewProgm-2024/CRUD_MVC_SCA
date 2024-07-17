@@ -50,7 +50,24 @@ public class AsignaturaDAO implements CRUD_Asignatura{
 
     @Override
     public Asignatura list(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "SELECT asignaturas.id, asignaturas.nombre, asignaturas.id_prof, profesores.nombre, profesores.apell, asignaturas.grado FROM asignaturas INNER JOIN profesores on asignaturas.id_prof = profesores.id WHERE asignaturas.id="+id;
+        try {
+            con=cn.getConection();
+            st=con.createStatement();
+            rs=st.executeQuery(sql);
+            while (rs.next()){
+                a.setId(rs.getInt("asignaturas.id"));
+                a.setNombre(rs.getString("asignaturas.nombre"));
+                a.setGrado(rs.getString("asignaturas.grado"));
+                a.setId_prof(rs.getInt("id_prof"));
+                a.setNomb_prof(rs.getString("profesores.nombre"));
+                a.setApell_prof(rs.getString("profesores.apell"));
+
+            }
+        } catch (Exception e) {
+
+        }
+        return a;
     }
 
     @Override
@@ -70,7 +87,18 @@ public class AsignaturaDAO implements CRUD_Asignatura{
 
     @Override
     public boolean edit(Asignatura asign) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "UPDATE asignaturas SET nombre='"+asign.getNombre()+"', grado='"+asign.getGrado()+"', id_prof='"+asign.getId_prof()+"' WHERE id="+asign.getId();
+        
+        try {
+            con = cn.getConection();
+            st = con.createStatement();
+            st.executeUpdate(sql);
+
+        } catch (Exception e) {
+
+        }
+
+        return false;
     }
 
     @Override

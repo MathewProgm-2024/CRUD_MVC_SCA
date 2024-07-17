@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.Set;
 
 /**
  *
@@ -77,6 +78,19 @@ public class Controlador_Curso extends HttpServlet {
                 c.setCant_estud(0);
                 
                 dao.add(c);
+                acceso=listar;
+            }else if(action.equalsIgnoreCase("editar")){
+                request.setAttribute("idcur",request.getParameter("id"));
+                acceso=editar;                
+            }else if(action.equalsIgnoreCase("Actualizar")){
+                int id=Integer.parseInt(request.getParameter("txtId"));
+                String codigo = request.getParameter(String.valueOf("txtCodigo"));
+                
+                c.setId(id);                
+                c.setCodigo(codigo);
+                c.setCant_estud(0);
+                
+                dao.edit(c);
                 acceso=listar;
             }
             RequestDispatcher vista=request.getRequestDispatcher(acceso);
