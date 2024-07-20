@@ -88,16 +88,16 @@
                 </tr>
             </thead>
             <%
-                    AsignaturaDAO dao = new AsignaturaDAO();
-                    List<Asignatura> list = dao.listar();
-                    Iterator<Asignatura> iter = list.iterator();
-                    Asignatura asign = null;
-                    int i=0;
-                    while (iter.hasNext()) {
-                        asign = iter.next();
-                        i++;
+                AsignaturaDAO dao = new AsignaturaDAO();
+                List<Asignatura> list = dao.listar();
+                Iterator<Asignatura> iter = list.iterator();
+                Asignatura asign = null;
+                int i = 0;
+                while (iter.hasNext()) {
+                    asign = iter.next();
+                    i++;
 
-                %>
+            %>
             <tbody class="table-group-divider">
                 <tr>
                     <td><%= i %></td>

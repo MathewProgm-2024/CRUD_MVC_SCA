@@ -33,31 +33,7 @@
                 <header>
                     <div class="perfil">
                         <a href=""><i class="bi bi-person-badge"></i><br>Administrador</a>
-                    </div>
-                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Inicio</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Asignaturas</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Cursos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link active">Estudiantes</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Profesores</a>
-                                </li>
-                            </ul>
-                            <div class="logo">
-                                <img src="logoSCA.JPG" alt="">
-                            </div>
-                        </div>
-                    </nav>
+                    </div>                   
                 </header>
             </div>
         </nav>
@@ -65,6 +41,9 @@
         <div class="cuadro">
             <div class="contenedor">
                 <h1>Modificar<br>estudiante</h1>
+                <div class="row">
+                    <a class="btn" href="Controlador_Estud?accion=listar"><i class="bi bi-arrow-left-square"></i> Regresar</a>
+                </div>
             </div>
             <div class="contenedor">
                 <%
@@ -198,6 +177,7 @@
                     <div class="col-2">
                         <button type="reset">Limpiar campos</button>
                     </div>
+
                 </form>
             </div>
         </div>

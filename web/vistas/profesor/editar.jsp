@@ -29,8 +29,7 @@
                 <header>
                     <div class="perfil">
                         <a href=""><i class="bi bi-person-badge"></i><br>Administrador</a>
-                    </div>
-                    
+                    </div>                    
                 </header>
             </div>
         </nav>
@@ -38,6 +37,9 @@
         <div class="cuadro">
             <div class="contenedor">
                 <h1>Modificar<br>profesor</h1>
+                <div class="row">
+                    <a class="btn" href="Controlador_Prof?accion=listar"><i class="bi bi-arrow-left-square"></i> Regresar</a>
+                </div>
             </div>
             <div class="contenedor">
                 <%

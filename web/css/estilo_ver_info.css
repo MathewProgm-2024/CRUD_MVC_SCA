@@ -102,11 +102,13 @@ header {
 }
 
 .table a{
-    color: #503D42;
+    color: black;
+    font-weight: bolder;
 }
 
 .table a:hover{
     color: green;
+    font-weight: bolder;
 }
 
 .row {
@@ -116,6 +118,19 @@ header {
     padding-right: 30%;
     padding-left: 30%;
     padding-bottom: 1%;
+}
+
+.row a{
+    color: #0B3954;
+    font-weight: bolder;
+    width: 200px;
+    border-radius: 10px;
+
+}
+
+.row a:hover{
+    color: #0B3954;
+    border-color: #0B3954;
 }
 
 .col-3{

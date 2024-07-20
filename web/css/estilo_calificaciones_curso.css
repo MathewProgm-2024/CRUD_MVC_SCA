@@ -83,20 +83,33 @@ header {
     padding: auto;
 }
 
-#regresar{
-    background-color: #748B75;
-    color: #F5FBEF;
-    font-weight: bold;
+.row a{
+    color: #0B3954;
+    font-weight: bolder;
+    width: 150px;
+    border-radius: 10px;
+
 }
 
-#regresar:hover{
-    background-color: #F5FBEF;
-    color: #748B75;
-    border-color: #748B75;
+.row a:hover{
+    color: #0B3954;
+    border-color: #0B3954;
 }
 
-td > input{
-    width: 30px;
+.form-control{
+    width: 50px;
+}
+
+td{
+    align-content: center;
+}
+
+td input{
+    margin: auto;
+}
+
+td a{
+    margin: auto;
 }
 
 .table input:focus{
@@ -137,30 +150,6 @@ td > input{
     background-color: #F5FBEF;
     color: #503D42;
     border-color: #503D42;
-}
-
-section{
-    margin: auto;
-    padding-left: 5%;
-    padding-bottom: 10px;
-    padding-right: 5%;
-}
-
-summary{
-    font-size: 25px;
-    color: #503D42;
-    padding-left: 5%;
-}
-
-details{
-    background-color: #DDE8D9;
-    border-radius: 10px;
-}
-
-.acordeon h3{
-    color: #503D42;
-    font-weight: bolder;
-    text-align: center;
 }
 
 .table tr:nth-child(odd) td{

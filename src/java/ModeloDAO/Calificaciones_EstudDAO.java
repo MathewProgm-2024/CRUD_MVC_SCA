@@ -10,6 +10,7 @@ import Modelo.Asignatura;
 import Modelo.Calificaciones;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +64,22 @@ public class Calificaciones_EstudDAO implements CRUD_Calificaciones{
 
     @Override
     public boolean add(Calificaciones calif) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            int i = 1;
+            do{
+                String sql = "INSERT INTO calificaciones (id_estud, id_asign, periodo) values('" + calif.getId_estud() + "', '" + calif.getId_asign() + "', '" + i + "')";
+
+                con = cn.getConection();
+                st = con.createStatement();
+                st.executeUpdate(sql);
+                i++;
+            }while (i<=4);
+            
+        } catch (SQLException e) {
+
+        }
+
+        return false;
     }
 
     @Override
@@ -73,6 +89,16 @@ public class Calificaciones_EstudDAO implements CRUD_Calificaciones{
 
     @Override
     public boolean eliminar(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List listar_calif_curso(String asign, String curso, String periodo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List lista_asign(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

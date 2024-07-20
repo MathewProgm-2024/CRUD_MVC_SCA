@@ -22,6 +22,7 @@ import java.util.HashSet;
 public class Controlador_Asign extends HttpServlet {
     
     String listar="vistas/asignaturas/listar.jsp";
+    String listar_estud="vistas/asignaturas/asign_estud.jsp";
     String add="vistas/asignaturas/agregar.jsp";
     String editar="vistas/asignaturas/editar.jsp";
     Asignatura a = new Asignatura();
@@ -98,6 +99,9 @@ public class Controlador_Asign extends HttpServlet {
                 
                 dao.edit(a);
                 acceso=listar;
+            }else if(action.equalsIgnoreCase("listar_estud")){
+                request.setAttribute("idestud",request.getParameter("id"));
+                acceso=listar_estud;
             }
             RequestDispatcher vista=request.getRequestDispatcher(acceso);
             vista.forward(request, response);

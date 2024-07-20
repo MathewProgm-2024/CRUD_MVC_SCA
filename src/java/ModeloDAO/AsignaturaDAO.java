@@ -105,5 +105,28 @@ public class AsignaturaDAO implements CRUD_Asignatura{
     public boolean eliminar(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public List listar_estud(int id) {
+        ArrayList<Asignatura> list = new ArrayList<>();
+        String sql = "SELECT calificaciones.id, id_asign, id_estud, asignaturas.nombre, profesores.nombre, profesores.apell, asignaturas.grado FROM calificaciones INNER JOIN asignaturas on asignaturas.id = calificaciones.id_asign INNER JOIN profesores on profesores.id = asignaturas.id_prof INNER JOIN estudiantes on estudiantes.id = calificaciones.id_estud INNER JOIN cursos on cursos.id = estudiantes.id_curso WHERE estudiantes.id="+id;
+        try {
+            con=cn.getConection();
+            st=con.createStatement();
+            rs=st.executeQuery(sql);
+            while (rs.next()){
+                Asignatura asign = new Asignatura();
+                asign.setId(rs.getInt("id"));
+                asign.setNombre(rs.getString("asignaturas.nombre"));
+                asign.setGrado(rs.getString("grado"));
+                asign.setNomb_prof(rs.getString("profesores.nombre"));
+                asign.setApell_prof(rs.getString("profesores.apell"));
+                list.add(asign);
+            }
+        } catch (Exception e) {
+
+        }
+        return list;
+    }
     
 }

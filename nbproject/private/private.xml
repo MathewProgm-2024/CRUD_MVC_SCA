@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/vistas/estudiante/listar.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/ModeloDAO/AsignaturaDAO.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/Controlador/Controlador_Estud.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/ModeloDAO/EstudianteDAO.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/vistas/asignaturas/agregar.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/vistas/estudiante/agregar.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/ModeloDAO/ProfesorDAO.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/ModeloDAO/CursoDAO.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

@@ -25,6 +25,9 @@ public class Calificaciones {
     String nomb_estud;
     String apell_estud;
     String asign;
+    String curso;
+    String nomb_prof;
+    String apell_prof;
     
     public Calificaciones() {
     }
@@ -46,6 +49,9 @@ public class Calificaciones {
         this.nomb_estud = nomb_estud;
         this.apell_estud = apell_estud;
         this.asign = asign;
+        this.curso = curso;
+        this.nomb_prof = nomb_prof;
+        this.apell_prof = apell_prof;
     }
 
     public int getId() {
@@ -174,6 +180,30 @@ public class Calificaciones {
 
     public void setAsign(String asign) {
         this.asign = asign;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public String getNomb_prof() {
+        return nomb_prof;
+    }
+
+    public void setNomb_prof(String nomb_prof) {
+        this.nomb_prof = nomb_prof;
+    }
+
+    public String getApell_prof() {
+        return apell_prof;
+    }
+
+    public void setApell_prof(String apell_prof) {
+        this.apell_prof = apell_prof;
     }
 
     

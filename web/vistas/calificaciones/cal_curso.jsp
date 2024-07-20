@@ -4,6 +4,8 @@
     Author     : USUARIO
 --%>
 
+<%@page import="Modelo.Curso"%>
+<%@page import="ModeloDAO.CursoDAO"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Modelo.Calificaciones"%>
 <%@page import="java.util.List"%>
@@ -40,378 +42,78 @@
 
         <div class="cuadro">
             <div class="contenedor">
-                <h1>CALIFICACIONES CURSO 501</h1>
+                <%
+                    CursoDAO daoc = new CursoDAO();
+                    int id = Integer.parseInt((String) request.getAttribute("curso"));
+                    Curso c = (Curso) daoc.list(id);
+                    String curso = c.getCodigo();
+                    String per = String.valueOf(request.getAttribute("per"));
+                    String asign = String.valueOf(request.getAttribute("asign"));
+
+                %>
+                <h1>CALIFICACIONES CURSO <%=c.getCodigo()%></h1>
             </div>
             <form class="row">
                 <div class="col-3">
-                    <button id="regresar"><i class="bi bi-arrow-left-square"></i> Regresar</button>
-                </div>
-                <div class="col-3">
-                    <button id="guardar"><i class="bi bi-floppy2-fill"></i> Guardar</button>
+                    <a class="btn" id="regresar"><i class="bi bi-arrow-left-square"></i> Regresar</a>
                 </div>
             </form>
         </div>
-        <div class="acordeon">
-            <h3>Periodos</h3>
-            <section>
-                <details>
-                    <summary>1</summary>
-                    <div class="tabla">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Estudiante</th>
-                                    <th scope="col">Nota 1</th>
-                                    <th scope="col">Nota 2</th>
-                                    <th scope="col">Nota 3</th>
-                                    <th scope="col">Nota 4</th>
-                                    <th scope="col">Nota 5</th>
-                                    <th scope="col">Nota Parcial</th>
-                                    <th scope="col">Autoevaluación</th>
-                                    <th scope="col">Coevaluación</th>
-                                    <th scope="col">Acumulado</th>
-                                </tr>
-                            </thead>
-                            <tbody class="table-group-divider">
-                                <%
-                                    Calif_CursoDAO dao = new Calif_CursoDAO();
-                                    List<Calificaciones> list = dao.listar();
-                                    Iterator<Calificaciones> iter = list.iterator();
-                                    Calificaciones calif = null;
-                                    int i=0;
-                                    while (iter.hasNext()) {
-                                        calif = iter.next();
-                                        i=+1;
-                                %>
-                                <tr>
-                                    <td><%= i %></td>
-                                    <td>
-                                        <a href="Controlador_CalifEstud?accion=listar"><%= calif.getNomb_estud() %> <%= calif.getApell_estud() %></a>
-                                    </td>
-                                    <td><input type="text" value="<%= calif.getNota1() %>"></td>
-                                    <td><input type="text" value="<%= calif.getNota2() %>"></td>
-                                    <td><input type="text" value="<%= calif.getNota3() %>"></td>
-                                    <td><input type="text" value="<%= calif.getNota4() %>"></td>
-                                    <td><input type="text" value="<%= calif.getNota5() %>"></td>
-                                    <td><%= calif.getNota_parc() %></td>
-                                    <td><input type="text" value="<%= calif.getCoev() %>"></td>
-                                    <td><input type="text" value="<%= calif.getAutoev() %>"></td>
-                                    <td><%= calif.getNota_fin() %></td>
-                                </tr> 
-                                <%}%>
-                            </tbody>
-                        </table>
-                    </div>
-                </details>
-            </section>
+        <div class="tabla">
+            <form action="Controlador_CalifCurs">                
+                <table class="table table-bordered">                    
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Estudiante</th>
+                            <th scope="col">Nota 1</th>
+                            <th scope="col">Nota 2</th>
+                            <th scope="col">Nota 3</th>
+                            <th scope="col">Nota 4</th>
+                            <th scope="col">Nota 5</th>
+                            <th scope="col">Nota Parcial</th>
+                            <th scope="col">Autoevaluación</th>
+                            <th scope="col">Coevaluación</th>
+                            <th scope="col">Acumulado</th>
+                            <th scope="col">Acción</th>
+                        </tr>
+                    </thead>
+                    <%
+                        Calif_CursoDAO daocal = new Calif_CursoDAO();
+                        List<Calificaciones> list = daocal.listar_calif_curso(asign,curso,per);
+                        Iterator<Calificaciones> iter = list.iterator();
+                        Calificaciones calif = null;
+                        int i=0;
+                        while (iter.hasNext()) {
+                            calif = iter.next();
+                            i++;
+                    %>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <input type="hidden" name="txtId" class="form-control" value="<%=calif.getId_estud()%>">
+                            <input type="hidden" name="txtPer" class="form-control" value="<%=calif.getPeriodo()%>">
+                            <td><%=i%></td>
+                            <td>
+                                <a href=""><%=calif.getNomb_estud()%> <%=calif.getApell_estud()%></a>
+                            </td>
+                            <td><input type="text" name="txtNota1" class="form-control" value="<%=calif.getNota1()%>"></td>
+                            <td><input type="text" name="txtNota2" class="form-control" value="<%=calif.getNota2()%>"></td>
+                            <td><input type="text" name="txtNota3" class="form-control" value="<%=calif.getNota3()%>"></td>
+                            <td><input type="text" name="txtNota4" class="form-control" value="<%=calif.getNota4()%>"></td>
+                            <td><input type="text" name="txtNota5" class="form-control" value="<%=calif.getNota5()%>"></td>
+                            <td><%=calif.getNota_parc()%></td>
+                            <td><input type="text" name="txtAutoev" class="form-control" value="<%=calif.getAutoev()%>"></td>
+                            <td><input type="text" name="txtCoev" class="form-control" value="<%=calif.getCoev()%>"></td>
+                            <td><%=calif.getNota_fin()%></td>
+                            <td>
+                            <button type="submit" name="accion" value="Actualizar" id="guardar"><i class="bi bi-floppy2-fill"></i></button>
+                            </td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+            </form>
         </div>
-
-        <section id="tb_p_2">
-            <details>
-                <summary>2</summary>
-                <div class="tabla">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Estudiante</th>
-                                <th scope="col">Nota 1</th>
-                                <th scope="col">Nota 2</th>
-                                <th scope="col">Nota 3</th>
-                                <th scope="col">Nota 4</th>
-                                <th scope="col">Nota 5</th>
-                                <th scope="col">Nota Parcial</th>
-                                <th scope="col">Autoevaluación</th>
-                                <th scope="col">Coevaluación</th>
-                                <th scope="col">Acumulado</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <a href="Controlador_CalifEstud?accion=listar">Reyes Caridad Arteaga Mateos</a>
-                                </td>
-                                <td><input type="text" value="3.5"></td>
-                                <td><input type="text" value="3.5"></td>
-                                <td><input type="text" value="3.5"></td>
-                                <td><input type="text" value="3.5"></td>
-                                <td><input type="text" value="3.5"></td>
-                                <td>3.5</td>
-                                <td><input type="text" value="3.3"></td>
-                                <td><input type="text" value="3.3"></td>
-                                <td>3.4</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <a href="">Chucho Maldonado-Jaén</a>
-                                </td>
-                                <td><input type="text" value="4.9"></td>
-                                <td><input type="text" value="4.9"></td>
-                                <td><input type="text" value="4.9"></td>
-                                <td><input type="text" value="4.9"></td>
-                                <td><input type="text" value="4.9"></td>
-                                <td>4.9</td>
-                                <td><input type="text" value="4.5"></td>
-                                <td><input type="text" value="4.5"></td>
-                                <td>4.8</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>
-                                    <a href="">Andrés Villalba</a>
-                                </td>
-                                <td><input type="text" value="1.3"></td>
-                                <td><input type="text" value="1.3"></td>
-                                <td><input type="text" value="1.3"></td>
-                                <td><input type="text" value="1.3"></td>
-                                <td><input type="text" value="1.3"></td>
-                                <td>1.3</td>
-                                <td><input type="text" value="2.6"></td>
-                                <td><input type="text" value="2.6"></td>
-                                <td>1.5</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>
-                                    <a href="">Santos Mascaró Blanch</a>
-                                </td>
-                                <td><input type="text" value="4.8"></td>
-                                <td><input type="text" value="4.8"></td>
-                                <td><input type="text" value="4.8"></td>
-                                <td><input type="text" value="4.8"></td>
-                                <td><input type="text" value="4.8"></td>
-                                <td>4.8</td>
-                                <td><input type="text" value="4.5"></td>
-                                <td><input type="text" value="4.5"></td>
-                                <td>4.7</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>
-                                    <a href="">Guiomar Tellez Hernando</a>
-                                </td>
-                                <td><input type="text" value="2.4"></td>
-                                <td><input type="text" value="2.4"></td>
-                                <td><input type="text" value="2.4"></td>
-                                <td><input type="text" value="2.4"></td>
-                                <td><input type="text" value="2.4"></td>
-                                <td>2.4</td>
-                                <td><input type="text" value="3.0"></td>
-                                <td><input type="text" value="3.0"></td>
-                                <td>2.5</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </details>
-        </section>
-        <section id="tb_p_3">
-            <details>
-                <summary>3</summary>
-                <div class="tabla">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Estudiante</th>
-                                <th scope="col">Nota 1</th>
-                                <th scope="col">Nota 2</th>
-                                <th scope="col">Nota 3</th>
-                                <th scope="col">Nota 4</th>
-                                <th scope="col">Nota 5</th>
-                                <th scope="col">Nota Parcial</th>
-                                <th scope="col">Autoevaluación</th>
-                                <th scope="col">Coevaluación</th>
-                                <th scope="col">Acumulado</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <a href="">Reyes Caridad Arteaga Mateos</a>
-                                </td>
-                                <td><input type="text" value="3.5"></td>
-                                <td><input type="text" value="3.5"></td>
-                                <td><input type="text" value="3.5"></td>
-                                <td><input type="text" value="3.5"></td>
-                                <td><input type="text" value="3.5"></td>
-                                <td>3.5</td>
-                                <td><input type="text" value="3.3"></td>
-                                <td><input type="text" value="3.3"></td>
-                                <td>3.4</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <a href="">Chucho Maldonado-Jaén</a>
-                                </td>
-                                <td><input type="text" value="4.9"></td>
-                                <td><input type="text" value="4.9"></td>
-                                <td><input type="text" value="4.9"></td>
-                                <td><input type="text" value="4.9"></td>
-                                <td><input type="text" value="4.9"></td>
-                                <td>4.9</td>
-                                <td><input type="text" value="4.5"></td>
-                                <td><input type="text" value="4.5"></td>
-                                <td>4.8</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>
-                                    <a href="">Andrés Villalba</a>
-                                </td>
-                                <td><input type="text" value="1.3"></td>
-                                <td><input type="text" value="1.3"></td>
-                                <td><input type="text" value="1.3"></td>
-                                <td><input type="text" value="1.3"></td>
-                                <td><input type="text" value="1.3"></td>
-                                <td>1.3</td>
-                                <td><input type="text" value="2.6"></td>
-                                <td><input type="text" value="2.6"></td>
-                                <td>1.5</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>
-                                    <a href="">Santos Mascaró Blanch</a>
-                                </td>
-                                <td><input type="text" value="4.8"></td>
-                                <td><input type="text" value="4.8"></td>
-                                <td><input type="text" value="4.8"></td>
-                                <td><input type="text" value="4.8"></td>
-                                <td><input type="text" value="4.8"></td>
-                                <td>4.8</td>
-                                <td><input type="text" value="4.5"></td>
-                                <td><input type="text" value="4.5"></td>
-                                <td>4.7</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>
-                                    <a href="">Guiomar Tellez Hernando</a>
-                                </td>
-                                <td><input type="text" value="2.4"></td>
-                                <td><input type="text" value="2.4"></td>
-                                <td><input type="text" value="2.4"></td>
-                                <td><input type="text" value="2.4"></td>
-                                <td><input type="text" value="2.4"></td>
-                                <td>2.4</td>
-                                <td><input type="text" value="3.0"></td>
-                                <td><input type="text" value="3.0"></td>
-                                <td>2.5</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </details>
-        </section>
-        <section id="tb_p_4">
-            <details>
-                <summary>4</summary>
-                <div class="tabla">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Estudiante</th>
-                                <th scope="col">Nota 1</th>
-                                <th scope="col">Nota 2</th>
-                                <th scope="col">Nota 3</th>
-                                <th scope="col">Nota 4</th>
-                                <th scope="col">Nota 5</th>
-                                <th scope="col">Nota Parcial</th>
-                                <th scope="col">Autoevaluación</th>
-                                <th scope="col">Coevaluación</th>
-                                <th scope="col">Acumulado</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <a href="">Reyes Caridad Arteaga Mateos</a>
-                                </td>
-                                <td><input type="text" value="3.5"></td>
-                                <td><input type="text" value="3.5"></td>
-                                <td><input type="text" value="3.5"></td>
-                                <td><input type="text" value="3.5"></td>
-                                <td><input type="text" value="3.5"></td>
-                                <td>3.5</td>
-                                <td><input type="text" value="3.3"></td>
-                                <td><input type="text" value="3.3"></td>
-                                <td>3.4</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <a href="">Chucho Maldonado-Jaén</a>
-                                </td>
-                                <td><input type="text" value="4.9"></td>
-                                <td><input type="text" value="4.9"></td>
-                                <td><input type="text" value="4.9"></td>
-                                <td><input type="text" value="4.9"></td>
-                                <td><input type="text" value="4.9"></td>
-                                <td>4.9</td>
-                                <td><input type="text" value="4.5"></td>
-                                <td><input type="text" value="4.5"></td>
-                                <td>4.8</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>
-                                    <a href="">Andrés Villalba</a>
-                                </td>
-                                <td><input type="text" value="1.3"></td>
-                                <td><input type="text" value="1.3"></td>
-                                <td><input type="text" value="1.3"></td>
-                                <td><input type="text" value="1.3"></td>
-                                <td><input type="text" value="1.3"></td>
-                                <td>1.3</td>
-                                <td><input type="text" value="2.6"></td>
-                                <td><input type="text" value="2.6"></td>
-                                <td>1.5</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>
-                                    <a href="">Santos Mascaró Blanch</a>
-                                </td>
-                                <td><input type="text" value="4.8"></td>
-                                <td><input type="text" value="4.8"></td>
-                                <td><input type="text" value="4.8"></td>
-                                <td><input type="text" value="4.8"></td>
-                                <td><input type="text" value="4.8"></td>
-                                <td>4.8</td>
-                                <td><input type="text" value="4.5"></td>
-                                <td><input type="text" value="4.5"></td>
-                                <td>4.7</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>
-                                    <a href="">Guiomar Tellez Hernando</a>
-                                </td>
-                                <td><input type="text" value="2.4"></td>
-                                <td><input type="text" value="2.4"></td>
-                                <td><input type="text" value="2.4"></td>
-                                <td><input type="text" value="2.4"></td>
-                                <td><input type="text" value="2.4"></td>
-                                <td>2.4</td>
-                                <td><input type="text" value="3.0"></td>
-                                <td><input type="text" value="3.0"></td>
-                                <td>2.5</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </details>
-        </section>
-    </div>
-</div>
-</body>
+    </body>
 
 </html>

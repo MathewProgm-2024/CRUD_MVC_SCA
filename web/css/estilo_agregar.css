@@ -104,6 +104,19 @@ header {
     text-align: center;
 }
 
+.row a{
+    color: #0B3954;
+    font-weight: bolder;
+    width: 150px;
+    border-radius: 10px;
+
+}
+
+.row a:hover{
+    color: #0B3954;
+    border-color: #0B3954;
+}
+
 .col-3 button{
     background-color: #503D42;
     color: #F5FBEF;
@@ -182,3 +195,4 @@ a{
     box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px #84C318;
     outline: 0 none;
 }
+

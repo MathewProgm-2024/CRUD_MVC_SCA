@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface CRUD_Asignatura {
     public List listar();
+    public List listar_estud(int id);
     public Asignatura list(int id);
     public boolean add(Asignatura asign);
     public boolean edit(Asignatura asign);

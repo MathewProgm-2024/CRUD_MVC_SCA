@@ -84,6 +84,7 @@
                     <th scope="col">Curso</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -103,7 +104,10 @@
                     <td><%= estud.getNombre() %> <%= estud.getApell() %></td>
                     <td><%= estud.getNomb_curso() %></td>
                     <td>
-                        <a href="Controlador_Estud?accion=editar&id=<%=estud.getId()%>">Ver Detalle</a>
+                        <a href="Controlador_Asign?accion=listar_estud&id=<%=estud.getId()%>">Asignaturas</a>
+                    </td>
+                    <td>
+                        <a href="Controlador_Estud?accion=editar&id=<%=estud.getId()%>">Editar</a>
                     </td>
                     <td>
                         <a href="">Eliminar</a>

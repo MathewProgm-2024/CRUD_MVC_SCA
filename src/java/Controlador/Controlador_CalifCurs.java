@@ -4,6 +4,9 @@
  */
 package Controlador;
 
+import Modelo.Calificaciones;
+import ModeloDAO.Calif_CursoDAO;
+import ModeloDAO.Calificaciones_EstudDAO;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,10 +20,13 @@ import jakarta.servlet.http.HttpServletResponse;
  * @author USUARIO
  */
 public class Controlador_CalifCurs extends HttpServlet {
-    
+
     String listar = "vistas/calificaciones/cal_curso.jsp";
-    String add = "vistas/curso/agregar.jsp";
-    String editar = "vistas/curso/editar.jsp";
+    String listar_asign = "vistas/asignaturas/asign_curso.jsp";
+    String list_cursos = "vistas/curso/listar.jsp";
+
+    Calificaciones c = new Calificaciones();
+    Calif_CursoDAO dao = new Calif_CursoDAO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -63,7 +69,43 @@ public class Controlador_CalifCurs extends HttpServlet {
         String acceso = "";
         String action = request.getParameter("accion");
         if (action.equalsIgnoreCase("listar")) {
+            request.setAttribute("per", request.getParameter("per"));
+            request.setAttribute("curso", request.getParameter("curso"));
+            request.setAttribute("asign", request.getParameter("asign"));
             acceso = listar;
+        } else if (action.equalsIgnoreCase("listar_asign")) {
+            request.setAttribute("idcur", request.getParameter("id"));
+            acceso = listar_asign;
+        } else if (action.equalsIgnoreCase("Actualizar")) {
+            request.setAttribute("per", request.getParameter("per"));
+            request.setAttribute("curso", request.getParameter("curso"));
+            request.setAttribute("asign", request.getParameter("asign"));
+            int id_estud = Integer.parseInt(request.getParameter("txtId"));
+            String periodo = request.getParameter("txtPer");
+            double nota1 = Double.parseDouble(request.getParameter("txtNota1"));
+            double nota2 = Double.parseDouble(request.getParameter("txtNota2"));
+            double nota3 = Double.parseDouble(request.getParameter("txtNota3"));
+            double nota4 = Double.parseDouble(request.getParameter("txtNota4"));
+            double nota5 = Double.parseDouble(request.getParameter("txtNota5"));
+            double nota_parc = (nota1 + nota2 + nota3 + nota4 + nota5) / 5;
+            double autoev = Double.parseDouble(request.getParameter("txtAutoev"));
+            double coev = Double.parseDouble(request.getParameter("txtCoev"));
+            double nota_fin = (nota_parc * 0.80) + (coev * 0.10) + (autoev * 0.10);
+
+            c.setId_estud(id_estud);
+            c.setPeriodo(periodo);
+            c.setNota1(nota1);
+            c.setNota2(nota2);
+            c.setNota3(nota3);
+            c.setNota4(nota4);
+            c.setNota5(nota5);
+            c.setNota_parc(nota_parc);
+            c.setAutoev(autoev);
+            c.setCoev(coev);
+            c.setNota_fin(nota_fin);
+
+            dao.edit(c);
+            acceso=list_cursos;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

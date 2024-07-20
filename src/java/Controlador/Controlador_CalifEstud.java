@@ -4,6 +4,8 @@
  */
 package Controlador;
 
+import Modelo.Calificaciones;
+import ModeloDAO.Calificaciones_EstudDAO;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,8 +21,12 @@ import jakarta.servlet.http.HttpServletResponse;
 public class Controlador_CalifEstud extends HttpServlet {
 
     String listar = "vistas/calificaciones/cal_estud.jsp";
-    String add = "vistas/curso/agregar.jsp";
+    String add = "vistas/calificaciones/agreg_calif_estud.jsp";
+    String estud = "vistas/estudiante/listar.jsp";
     String editar = "vistas/curso/editar.jsp";
+    
+    Calificaciones c = new Calificaciones();
+    Calificaciones_EstudDAO dao = new Calificaciones_EstudDAO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -64,6 +70,18 @@ public class Controlador_CalifEstud extends HttpServlet {
         String action = request.getParameter("accion");
         if (action.equalsIgnoreCase("listar")) {
             acceso = listar;
+        } else if (action.equalsIgnoreCase("add")) {
+            request.setAttribute("idestud",request.getParameter("id"));
+            acceso = add;
+        } else if (action.equalsIgnoreCase("Agregar")) {
+            int id_estud = Integer.parseInt(request.getParameter("txtId_estud"));
+            int id_asign = Integer.parseInt(request.getParameter("txtId_asign"));
+            
+            c.setId_estud(id_estud);
+            c.setId_asign(id_asign);
+            
+            dao.add(c);
+            acceso=estud;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

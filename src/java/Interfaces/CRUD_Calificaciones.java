@@ -13,6 +13,8 @@ import java.util.List;
  */
 public interface CRUD_Calificaciones {
     public List listar();
+    public List listar_calif_curso(String asign, String curso, String periodo);
+    public List lista_asign(int id);
     public Calificaciones list(int id);
     public boolean add(Calificaciones calif);
     public boolean edit(Calificaciones calif);

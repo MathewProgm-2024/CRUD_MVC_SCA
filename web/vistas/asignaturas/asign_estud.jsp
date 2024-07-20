@@ -1,14 +1,17 @@
 <%-- 
-    Document   : listar
-    Created on : 11/07/2024, 1:59:22 p. m.
+    Document   : asign_estud
+    Created on : 17/07/2024, 3:54:16 p. m.
     Author     : USUARIO
 --%>
 
+<%@page import="Modelo.Estudiante"%>
+<%@page import="ModeloDAO.EstudianteDAO"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="Modelo.Curso"%>
+<%@page import="Modelo.Asignatura"%>
 <%@page import="java.util.List"%>
-<%@page import="ModeloDAO.CursoDAO"%>
+<%@page import="ModeloDAO.AsignaturaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,9 +25,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-        <script src="/js/controlador_curso.js"></script>
-        <script src="/js/controlador_period.js"></script>
-        <title>Cursos</title>
+        <script src="/js/controlador_asign.js"></script>
+        <title>Asignaturas</title>
     </head>
 
     <body>
@@ -38,19 +40,19 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a href="index.jsp" class="nav-link">Inicio</a>
+                                    <a href="" class="nav-link">Inicio</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="Controlador_Asign?accion=listar" class="nav-link">Asignaturas</a>
+                                    <a href="" class="nav-link">Asignaturas</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="Controlador_Curso?accion=listar" class="nav-link active">Cursos</a>
+                                    <a href="" class="nav-link">Cursos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="Controlador_Estud?accion=listar" class="nav-link">Estudiantes</a>
+                                    <a href="" class="nav-link active">Estudiantes</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="Controlador_Prof?accion=listar" class="nav-link">Profesores</a>
+                                    <a href="" class="nav-link">Profesores</a>
                                 </li>
                             </ul>
                             <div class="logo">
@@ -64,60 +66,61 @@
 
         <div class="cuadro">
             <div class="contenedor">
-                <h1>CURSOS</h1>
+                <%
+                    EstudianteDAO daoe = new EstudianteDAO();
+                    int id = Integer.parseInt((String) request.getAttribute("idestud"));
+                    Estudiante e = (Estudiante) daoe.list(id);
+                %>
+                <h1>Asignaturas del estudiante <%=e.getNombre()%> <%=e.getApell()%></h1>
             </div>
-            <form class="row">
+            <form class="row">                
+                <div class="col-3">
+                    <a href="Controlador_CalifEstud?accion=add&id=<%=e.getId()%>" class="btn"><i class="bi bi-plus-square"></i> Agregar asignatura para el estudiante</a>
+                </div>
                 <div class="col-2">
-                    <label for="buscar" class="form-label">Buscar Curso <i class="bi bi-search"></i></label>
+                    <label for="buscar" class="form-label">Buscar Asignatura <i class="bi bi-search"></i></label>
                     <input type="text" class="form-control" id="buscar" placeholder="Buscar" onkeyup="filtrar()">
                 </div>
-                <div class="col-3">
-                    <a class="btn" href="Controlador_Curso?accion=add" ><i class="bi bi-plus-square"></i> Agregar nuevo curso</a>
-                </div>
+
             </form>
         </div>
         <div class="tabla">
-            <table class="table table-bordered" id="tb_cursos">
+            <table class="table table-bordered" id="tb_asign">
                 <thead>
                     <tr>
-                        <th scope="col">Curso</th>
-                        <th scope="col">Cantidad de Estudiantes</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
+                        <th scope="col">#</th>
+                        <th scope="col">Asignatura</th>
+                        <th scope="col">Profesor</th>
+                        <th scope="col">Grado</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <%
-                    CursoDAO dao = new CursoDAO();
-                    List<Curso> list = dao.listar();
-                    Iterator<Curso> iter = list.iterator();
-                    Curso curs = null;
+                    AsignaturaDAO dao = new AsignaturaDAO();
+                    List<Asignatura> list = dao.listar_estud(id);
+                    Iterator<Asignatura> iter = list.iterator();
+                    Asignatura asign = null;
+                    int i = 0;
                     while (iter.hasNext()) {
-                        curs = iter.next();
+                        asign = iter.next();
+                        i++;
 
                 %>
                 <tbody class="table-group-divider">
                     <tr>
-                        <td><%= curs.getCodigo()%></td>
-                        <td><%= curs.getCant_estud()%></td>
+                        <td><%= i%></td>
+                        <td><%= asign.getNombre()%></td>
+                        <td><%= asign.getNomb_prof()%> <%= asign.getApell_prof()%></td>
+                        <td><%= asign.getGrado()%></td>
                         <td>
-                            <a href="Controlador_CalifCurs?accion=listar_asign&id=<%= curs.getId()%>">Ver Calificaciones</a>
-                        </td>
-                        <td>
-                            <a href="Controlador_Curso?accion=editar&id=<%= curs.getId() %>">Editar</a>
-                        </td>
-                        <td>
-                            <a href="">Vaciar</a>
-                        </td>
-                        <td>
-                            <a href="">Eliminar</a>
+                            <a href="">Eliminar asignación</a>
                         </td>
                     </tr>
                     <%}%>
                 </tbody>
             </table>
         </div>
-    </body>
+    </div>
+</body>
 
 </html>
