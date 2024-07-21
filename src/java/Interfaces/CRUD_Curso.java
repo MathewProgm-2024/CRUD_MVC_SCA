@@ -14,6 +14,8 @@ import java.util.List;
 public interface CRUD_Curso {
     public List listar();
     public Curso list(int id);
+    public boolean vaciar(int id_curso);
+    public boolean contar_estud (int id_curso);
     public boolean add(Curso curso);
     public boolean edit(Curso curso);
     public boolean eliminar(int id);

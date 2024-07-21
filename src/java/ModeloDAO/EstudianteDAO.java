@@ -60,7 +60,7 @@ public class EstudianteDAO implements CRUD_Estudiante {
 
     @Override
     public Estudiante list(int id) {
-        String sql = "SELECT estudiantes.id, estudiantes.nombre, estudiantes.apell, estudiantes.num_doc, estudiantes.fech_nac, estudiantes.ciud_nac, estudiantes.barr_res, estudiantes.direc_res, estudiantes.edad, estudiantes.genero, estudiantes.rh, estudiantes.eps, estudiantes.telefono, estudiantes.correo, estudiantes.nomb_acud, estudiantes.apell_acu, estudiantes.usuario, estudiantes.contras, estudiantes.id_curso, cursos.codigo FROM estudiantes INNER JOIN cursos ON cursos.id = estudiantes.id_curso WHERE estudiantes.id="+id;
+        String sql = "SELECT estudiantes.id, estudiantes.nombre, estudiantes.apell, estudiantes.num_doc, estudiantes.fech_nac, estudiantes.ciud_nac, estudiantes.barr_res, estudiantes.direc_res, estudiantes.edad, estudiantes.genero, estudiantes.rh, estudiantes.eps, estudiantes.telefono, estudiantes.correo, estudiantes.nomb_acud, estudiantes.apell_acu, estudiantes.usuario, estudiantes.contras, estudiantes.id_curso, cursos.codigo FROM estudiantes LEFT JOIN cursos ON cursos.id = estudiantes.id_curso WHERE estudiantes.id="+id;
         try {
             con = cn.getConection();
             st = con.createStatement();

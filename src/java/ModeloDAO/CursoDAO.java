@@ -110,4 +110,30 @@ public class CursoDAO implements CRUD_Curso {
         return false;
     }
 
+    @Override
+    public boolean vaciar(int id_curso) {
+        String sql = "UPDATE estudiantes SET id_curso=null WHERE id_curso="+id_curso;
+        try{
+            con=cn.getConection();
+            st=con.createStatement();
+            st.executeUpdate(sql);        
+        }catch (Exception e) {
+
+        }
+        return false;
+    }
+
+    @Override
+    public boolean contar_estud(int id_curso) {
+        String sql = "UPDATE cursos SET cant_estud=(SELECT count(*) FROM estudiantes WHERE id_curso="+id_curso+") WHERE id="+id_curso;
+        try{
+            con=cn.getConection();
+            st=con.createStatement();
+            st.executeUpdate(sql);        
+        }catch (Exception e) {
+
+        }
+        return false;
+    }
+
 }

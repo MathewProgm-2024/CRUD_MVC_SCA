@@ -95,7 +95,7 @@
                     Curso curs = null;
                     while (iter.hasNext()) {
                         curs = iter.next();
-
+                        dao.contar_estud(curs.getId());
                 %>
                 <tbody class="table-group-divider">
                     <tr>
@@ -108,7 +108,7 @@
                             <a href="Controlador_Curso?accion=editar&id=<%= curs.getId() %>">Editar</a>
                         </td>
                         <td>
-                            <a href="">Vaciar</a>
+                            <a href="Controlador_Curso?accion=dat_vac&id=<%= curs.getId() %>">Vaciar</a>
                         </td>
                         <td>
                             <a href="Controlador_Curso?accion=dat_elim&id=<%= curs.getId() %>">Eliminar</a>

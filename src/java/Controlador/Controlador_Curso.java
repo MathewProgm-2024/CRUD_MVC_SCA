@@ -13,7 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.Set;
+import java.util.HashSet;
 
 /**
  *
@@ -25,6 +25,7 @@ public class Controlador_Curso extends HttpServlet {
     String add="vistas/curso/agregar.jsp";
     String editar="vistas/curso/editar.jsp";
     String dat_elim = "vistas/curso/eliminar.jsp";
+    String dat_vac = "vistas/curso/vaciar.jsp";
     Curso c = new Curso();
     CursoDAO dao = new CursoDAO();
 
@@ -101,6 +102,15 @@ public class Controlador_Curso extends HttpServlet {
                 c.setId(id);
                 dao.eliminar(id);
                 acceso=listar;
+            }else if (action.equalsIgnoreCase("dat_vac")){
+                request.setAttribute("idcur",request.getParameter("id"));
+                acceso=dat_vac;
+            }else if (action.equalsIgnoreCase("vaciar")){
+                int id=Integer.parseInt(request.getParameter("id"));
+                c.setId(id);
+                dao.vaciar(id);
+                acceso=listar;
+                
             }
             RequestDispatcher vista=request.getRequestDispatcher(acceso);
             vista.forward(request, response);
