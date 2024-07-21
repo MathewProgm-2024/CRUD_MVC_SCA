@@ -25,6 +25,7 @@ public class Controlador_Asign extends HttpServlet {
     String listar_estud="vistas/asignaturas/asign_estud.jsp";
     String add="vistas/asignaturas/agregar.jsp";
     String editar="vistas/asignaturas/editar.jsp";
+    String dat_elim = "vistas/asignaturas/eliminar.jsp";
     Asignatura a = new Asignatura();
     AsignaturaDAO dao = new AsignaturaDAO();
 
@@ -102,6 +103,14 @@ public class Controlador_Asign extends HttpServlet {
             }else if(action.equalsIgnoreCase("listar_estud")){
                 request.setAttribute("idestud",request.getParameter("id"));
                 acceso=listar_estud;
+            }else if(action.equalsIgnoreCase("dat_elim")){
+                request.setAttribute("idasign",request.getParameter("id"));
+                acceso=dat_elim; 
+            }else if (action.equalsIgnoreCase("eliminar")){
+                int id=Integer.parseInt(request.getParameter("id"));
+                a.setId(id);
+                dao.eliminar(id);
+                acceso=listar;
             }
             RequestDispatcher vista=request.getRequestDispatcher(acceso);
             vista.forward(request, response);

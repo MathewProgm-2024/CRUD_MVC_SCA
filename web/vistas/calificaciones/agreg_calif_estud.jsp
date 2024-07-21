@@ -53,7 +53,7 @@
             <div class="contenedor">
                 <form action="Controlador_CalifEstud" class="row">
                     <div class="col-3">
-                        <label for="id_estuf" class="form-label">Id del estudiante (en la base de datos): <%=e.getId()%> <%=e.getNombre()%> <%=e.getApell()%></label>
+                        <label for="id_estud" class="form-label">Id del estudiante (en la base de datos): <%=e.getId()%> <%=e.getNombre()%> <%=e.getApell()%></label>
                         <input type="hidden" name="txtId_estud" class="form-control" id="id_estud" placeholder="Id_estud" value="<%=e.getId()%>">
                     </div>
                     <div class="col-3">

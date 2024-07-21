@@ -111,7 +111,7 @@
                         <a href="Controlador_Prof?accion=editar&id=<%=prof.getId()%>">Editar</a>
                     </td>
                     <td>
-                        <a href="">Eliminar</a>
+                        <a href="Controlador_Prof?accion=dat_elim&id=<%=prof.getId()%>">Eliminar</a>
                     </td>
                 </tr>
                 <%}%>

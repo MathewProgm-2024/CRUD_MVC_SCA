@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+body {
+    background-color: #F5FBEF;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.navbar a {
+    color: black;
+    font-weight: 600;
+    padding-right: 10px;
+}
+
+.nav-link.active {
+    background-color: #84C318;
+}
+
+.navbar a:hover {
+    color: #84C318;
+}
+
+.perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 50px;
+    padding-left: 50px;
+}
+
+.perfil i {
+    color: #84C318;
+    font-size: 30px;
+}
+
+.perfil a {
+    color: #84C318;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cuadro {
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.contenedor{
+    justify-items: center;
+    justify-content: center;
+}
+
+.contenedor h1{
+    text-align: center;
+    color: #503D42;
+    font-family: "Oswald", sans-serif;
+    font-weight: 800;
+}
+
+.contenedor h5{
+    text-align: center;
+    color: #DD403A;
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+}
+
+.tabla{
+    padding: 3%;
+}
+
+.table{
+    text-align: center;
+    border-color: #503D42;
+    font-weight: 500;
+    margin: 0px auto;
+    width: max-content;
+}
+
+.table th{
+    background: #DD403A;
+}
+
+
+
+.table a{
+    color: black;
+    font-weight: bolder;
+}
+
+.table a:hover{
+    color: green;
+    font-weight: bolder;
+}
+
+.row {
+    justify-content: center;
+    align-content: center;
+    align-items: self-end;
+    padding-right: 20%;
+    padding-left: 20%;
+    padding-bottom: 1%;
+}
+
+.row a{
+    color: #DD403A;
+    font-weight: bolder;
+    width: 200px;
+    border-radius: 10px;
+
+}
+
+.row a:hover{
+    color: #DD403A;
+    border-color: #DD403A;
+}
+
+#regresar{
+    color: #0B3954;
+    font-weight: bolder;
+    width: 200px;
+    border-radius: 10px;
+}
+
+#regresar:hover{
+    color: #0B3954;
+    border-color: #0B3954; 
+}
+
+.col-3{
+    width: auto;
+    margin: 0px auto;
+    padding-top: 2%;
+}
+
+.col-2{
+    width: auto;
+    margin: 0px auto;
+    padding-top: 2%;
+}
+
+.col-3 a{
+    background-color: #503D42;
+    color: #F5FBEF;
+    font-weight: bold;
+}
+
+.col-3 a:hover{
+    background-color: #F5FBEF;
+    color: #503D42;
+    border-color: #503D42;
+}
+
+.col-2 input:focus{
+    border-color: #84C318;
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px #84C318;
+    outline: 0 none;
+}
+
+#guardar{
+    background-color: #748B75;
+    color: #F5FBEF;
+    font-weight: bold;
+}
+
+#guardar:hover{
+    background-color: #F5FBEF;
+    color: #748B75;
+    border-color: #748B75;
+}
+
+#mycheck {
+    accent-color: #84C318;
+  }
+

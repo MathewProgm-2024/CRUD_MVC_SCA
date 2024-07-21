@@ -129,7 +129,15 @@ public class ProfesorDAO implements CRUD_Profesor {
 
     @Override
     public boolean eliminar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "DELETE FROM profesores WHERE id="+id;
+        try{
+            con=cn.getConection();
+            st=con.createStatement();
+            st.executeUpdate(sql);        
+        }catch (Exception e) {
+
+        }
+        return false;
     }
 
 }

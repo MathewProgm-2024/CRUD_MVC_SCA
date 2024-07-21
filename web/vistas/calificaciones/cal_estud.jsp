@@ -4,6 +4,8 @@
     Author     : USUARIO
 --%>
 
+<%@page import="Modelo.Estudiante"%>
+<%@page import="ModeloDAO.EstudianteDAO"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Modelo.Calificaciones"%>
 <%@page import="java.util.List"%>
@@ -39,20 +41,21 @@
 
         <div class="cuadro">
             <div class="contenedor">
+                <%
+                    EstudianteDAO daoc = new EstudianteDAO();
+                    int id = Integer.parseInt((String) request.getAttribute("idestud"));
+                    Estudiante e = (Estudiante) daoc.list(id);
+                    int id_estud = id;
+                %>
                 <h1>MIS CALIFICACIONES</h1>
-                <h3>Daniel Esteban Cuellar Tovar</h3>
+                <h3><%=e.getNombre()%> <%=e.getApell()%></h3>
             </div>
-            <form class="row">
-                <div class="col-3">
-                    <button id="regresar"><i class="bi bi-arrow-left-square"></i> Regresar</button>
-                </div>
-            </form>
         </div>
         <div class="acordeon">
             <h3>Periodos</h3>
             <section>
                 <details>
-                    <summary>1</summary>
+                    <summary>Primer Periodo (1°)</summary>
                     <div class="tabla">
                         <table class="table table-bordered">
                             <thead>                                
@@ -72,27 +75,27 @@
                             </thead>
                             <tbody class="table-group-divider">
                                 <%
-                                    Calificaciones_EstudDAO dao = new Calificaciones_EstudDAO();
-                                    List<Calificaciones> list = dao.listar();
-                                    Iterator<Calificaciones> iter = list.iterator();
-                                    Calificaciones calif = null;
-                                    int i=0;
-                                    while (iter.hasNext()) {
-                                        calif = iter.next();
-                                        i=+1;
+                                    Calificaciones_EstudDAO dao1 = new Calificaciones_EstudDAO();
+                                    List<Calificaciones> list1 = dao1.listar_calif_estud("1", id_estud);
+                                    Iterator<Calificaciones> iter1 = list1.iterator();
+                                    Calificaciones calif1 = null;
+                                    int i1 = 0;
+                                    while (iter1.hasNext()) {
+                                        calif1 = iter1.next();
+                                        i1++;
                                 %>
                                 <tr>
-                                    <td><%=i%></td>
-                                    <td><%= calif.getAsign() %></td>
-                                    <td><%= calif.getNota1() %></td>
-                                    <td><%= calif.getNota2() %></td>
-                                    <td><%= calif.getNota3() %></td>
-                                    <td><%= calif.getNota4() %></td>
-                                    <td><%= calif.getNota5() %></td>
-                                    <td><%= calif.getNota_parc() %></td>
-                                    <td><%= calif.getCoev() %></td>
-                                    <td><%= calif.getAutoev() %></td>
-                                    <td><%= calif.getNota_fin() %></td>
+                                    <td><%=i1%></td>
+                                    <td><%= calif1.getAsign()%></td>
+                                    <td><%= calif1.getNota1()%></td>
+                                    <td><%= calif1.getNota2()%></td>
+                                    <td><%= calif1.getNota3()%></td>
+                                    <td><%= calif1.getNota4()%></td>
+                                    <td><%= calif1.getNota5()%></td>
+                                    <td><%= calif1.getNota_parc()%></td>
+                                    <td><%= calif1.getCoev()%></td>
+                                    <td><%= calif1.getAutoev()%></td>
+                                    <td><%= calif1.getNota_fin()%></td>
                                 </tr>
                                 <%}%>
                             </tbody>
@@ -102,10 +105,10 @@
             </section>
             <section>
                 <details>
-                    <summary>2</summary>
+                    <summary>Segundo Periodo (2°)</summary>
                     <div class="tabla">
                         <table class="table table-bordered">
-                            <thead>
+                            <thead>                                
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Asignatura</th>
@@ -121,71 +124,30 @@
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
+                                <%
+                                    Calificaciones_EstudDAO dao2 = new Calificaciones_EstudDAO();
+                                    List<Calificaciones> list2 = dao2.listar_calif_estud("2", id_estud);
+                                    Iterator<Calificaciones> iter2 = list2.iterator();
+                                    Calificaciones calif2 = null;
+                                    int i2 = 0;
+                                    while (iter2.hasNext()) {
+                                        calif2 = iter2.next();
+                                        i2++;
+                                %>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Química</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.3</td>
-                                    <td>3.3</td>
-                                    <td>3.4</td>
+                                    <td><%=i2%></td>
+                                    <td><%= calif2.getAsign()%></td>
+                                    <td><%= calif2.getNota1()%></td>
+                                    <td><%= calif2.getNota2()%></td>
+                                    <td><%= calif2.getNota3()%></td>
+                                    <td><%= calif2.getNota4()%></td>
+                                    <td><%= calif2.getNota5()%></td>
+                                    <td><%= calif2.getNota_parc()%></td>
+                                    <td><%= calif2.getCoev()%></td>
+                                    <td><%= calif2.getAutoev()%></td>
+                                    <td><%= calif2.getNota_fin()%></td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Informática</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.5</td>
-                                    <td>4.5</td>
-                                    <td>4.8</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Biología</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>2.6</td>
-                                    <td>2.6</td>
-                                    <td>1.5</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Matemáticas</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.5</td>
-                                    <td>4.5</td>
-                                    <td>4.7</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Lectura y Escritura</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>3.0</td>
-                                    <td>3.0</td>
-                                    <td>2.5</td>
-                                </tr>
+                                <%}%>
                             </tbody>
                         </table>
                     </div>
@@ -193,10 +155,10 @@
             </section>
             <section>
                 <details>
-                    <summary>3</summary>
+                    <summary>Tercer Periodo (3°)</summary>
                     <div class="tabla">
                         <table class="table table-bordered">
-                            <thead>
+                            <thead>                                
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Asignatura</th>
@@ -212,71 +174,30 @@
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
+                                <%
+                                    Calificaciones_EstudDAO dao3 = new Calificaciones_EstudDAO();
+                                    List<Calificaciones> list3 = dao3.listar_calif_estud("3", id_estud);
+                                    Iterator<Calificaciones> iter3 = list3.iterator();
+                                    Calificaciones calif3 = null;
+                                    int i3 = 0;
+                                    while (iter3.hasNext()) {
+                                        calif3 = iter3.next();
+                                        i3++;
+                                %>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Química</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.3</td>
-                                    <td>3.3</td>
-                                    <td>3.4</td>
+                                    <td><%=i3%></td>
+                                    <td><%= calif3.getAsign()%></td>
+                                    <td><%= calif3.getNota1()%></td>
+                                    <td><%= calif3.getNota2()%></td>
+                                    <td><%= calif3.getNota3()%></td>
+                                    <td><%= calif3.getNota4()%></td>
+                                    <td><%= calif3.getNota5()%></td>
+                                    <td><%= calif3.getNota_parc()%></td>
+                                    <td><%= calif3.getCoev()%></td>
+                                    <td><%= calif3.getAutoev()%></td>
+                                    <td><%= calif3.getNota_fin()%></td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Informática</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.5</td>
-                                    <td>4.5</td>
-                                    <td>4.8</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Biología</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>2.6</td>
-                                    <td>2.6</td>
-                                    <td>1.5</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Matemáticas</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.5</td>
-                                    <td>4.5</td>
-                                    <td>4.7</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Lectura y Escritura</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>3.0</td>
-                                    <td>3.0</td>
-                                    <td>2.5</td>
-                                </tr>
+                                <%}%>
                             </tbody>
                         </table>
                     </div>
@@ -284,10 +205,10 @@
             </section>
             <section>
                 <details>
-                    <summary>4</summary>
+                    <summary>Cuarto Periodo (4°)</summary>
                     <div class="tabla">
                         <table class="table table-bordered">
-                            <thead>
+                            <thead>                                
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Asignatura</th>
@@ -303,71 +224,30 @@
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
+                                <%
+                                    Calificaciones_EstudDAO dao4 = new Calificaciones_EstudDAO();
+                                    List<Calificaciones> list4 = dao4.listar_calif_estud("4", id_estud);
+                                    Iterator<Calificaciones> iter4 = list4.iterator();
+                                    Calificaciones calif4 = null;
+                                    int i4 = 0;
+                                    while (iter4.hasNext()) {
+                                        calif4 = iter4.next();
+                                        i4++;
+                                %>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Química</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.5</td>
-                                    <td>3.3</td>
-                                    <td>3.3</td>
-                                    <td>3.4</td>
+                                    <td><%=i4%></td>
+                                    <td><%= calif4.getAsign()%></td>
+                                    <td><%= calif4.getNota1()%></td>
+                                    <td><%= calif4.getNota2()%></td>
+                                    <td><%= calif4.getNota3()%></td>
+                                    <td><%= calif4.getNota4()%></td>
+                                    <td><%= calif4.getNota5()%></td>
+                                    <td><%= calif4.getNota_parc()%></td>
+                                    <td><%= calif4.getCoev()%></td>
+                                    <td><%= calif4.getAutoev()%></td>
+                                    <td><%= calif4.getNota_fin()%></td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Informática</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.9</td>
-                                    <td>4.5</td>
-                                    <td>4.5</td>
-                                    <td>4.8</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Biología</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>1.3</td>
-                                    <td>2.6</td>
-                                    <td>2.6</td>
-                                    <td>1.5</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Matemáticas</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.8</td>
-                                    <td>4.5</td>
-                                    <td>4.5</td>
-                                    <td>4.7</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Lectura y Escritura</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>2.4</td>
-                                    <td>3.0</td>
-                                    <td>3.0</td>
-                                    <td>2.5</td>
-                                </tr>
+                                <%}%>
                             </tbody>
                         </table>
                     </div>

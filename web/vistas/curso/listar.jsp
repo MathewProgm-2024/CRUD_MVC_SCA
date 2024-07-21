@@ -111,7 +111,7 @@
                             <a href="">Vaciar</a>
                         </td>
                         <td>
-                            <a href="">Eliminar</a>
+                            <a href="Controlador_Curso?accion=dat_elim&id=<%= curs.getId() %>">Eliminar</a>
                         </td>
                     </tr>
                     <%}%>

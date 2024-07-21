@@ -110,7 +110,7 @@
                         <a href="Controlador_Estud?accion=editar&id=<%=estud.getId()%>">Editar</a>
                     </td>
                     <td>
-                        <a href="">Eliminar</a>
+                        <a href="Controlador_Estud?accion=dat_elim&id=<%=estud.getId()%>">Eliminar</a>
                     </td>
                 </tr>
                 <%}%>

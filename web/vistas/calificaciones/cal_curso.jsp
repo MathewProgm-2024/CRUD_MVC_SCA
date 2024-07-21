@@ -55,7 +55,7 @@
             </div>
             <form class="row">
                 <div class="col-3">
-                    <a class="btn" id="regresar"><i class="bi bi-arrow-left-square"></i> Regresar</a>
+                    <a class="btn" href="Controlador_CalifCurs?accion=listar_asign&id=<%= c.getId()%>" id="regresar"><i class="bi bi-arrow-left-square"></i> Regresar</a>
                 </div>
             </form>
         </div>
@@ -94,7 +94,7 @@
                             <input type="hidden" name="txtPer" class="form-control" value="<%=calif.getPeriodo()%>">
                             <td><%=i%></td>
                             <td>
-                                <a href=""><%=calif.getNomb_estud()%> <%=calif.getApell_estud()%></a>
+                                <a href="Controlador_CalifEstud?accion=listar&idestud=<%=calif.getId_estud()%>"><%=calif.getNomb_estud()%> <%=calif.getApell_estud()%></a>
                             </td>
                             <td><input type="text" name="txtNota1" class="form-control" value="<%=calif.getNota1()%>"></td>
                             <td><input type="text" name="txtNota2" class="form-control" value="<%=calif.getNota2()%>"></td>

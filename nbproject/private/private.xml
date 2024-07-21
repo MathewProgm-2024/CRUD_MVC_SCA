@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/vistas/curso/eliminar.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/vistas/asignaturas/eliminar.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/Controlador/Controlador_Asign.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/ModeloDAO/EstudianteDAO.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/Controlador/Controlador_CalifEstud.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/vistas/curso/listar.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/vistas/asignaturas/asign_estud.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/vistas/estudiante/editar.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/vistas/calificaciones/agreg_calif_estud.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/Controlador/Controlador_CalifCurs.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/Controlador/Controlador_Curso.java</file>
+        </group>
     </open-files>
 </project-private>

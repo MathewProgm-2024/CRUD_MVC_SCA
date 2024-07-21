@@ -23,8 +23,9 @@ public class Controlador_CalifEstud extends HttpServlet {
     String listar = "vistas/calificaciones/cal_estud.jsp";
     String add = "vistas/calificaciones/agreg_calif_estud.jsp";
     String estud = "vistas/estudiante/listar.jsp";
-    String editar = "vistas/curso/editar.jsp";
-    
+    String dat_elim = "vistas/calificaciones/eliminar_calif_estud.jsp";
+    String listar_estud="vistas/estudiante/listar.jsp";
+
     Calificaciones c = new Calificaciones();
     Calificaciones_EstudDAO dao = new Calificaciones_EstudDAO();
 
@@ -69,19 +70,34 @@ public class Controlador_CalifEstud extends HttpServlet {
         String acceso = "";
         String action = request.getParameter("accion");
         if (action.equalsIgnoreCase("listar")) {
+            request.setAttribute("per", request.getParameter("per"));
+            request.setAttribute("idestud", request.getParameter("idestud"));
             acceso = listar;
         } else if (action.equalsIgnoreCase("add")) {
-            request.setAttribute("idestud",request.getParameter("id"));
+            request.setAttribute("idestud", request.getParameter("id"));
             acceso = add;
         } else if (action.equalsIgnoreCase("Agregar")) {
             int id_estud = Integer.parseInt(request.getParameter("txtId_estud"));
             int id_asign = Integer.parseInt(request.getParameter("txtId_asign"));
+
+            c.setId_estud(id_estud);
+            c.setId_asign(id_asign);
+
+            dao.add(c);
+            acceso = estud;
+        } else if (action.equalsIgnoreCase("dat_elim")) {
+            request.setAttribute("idasign", request.getParameter("id_asign"));
+            request.setAttribute("idestud",request.getParameter("id_estud"));
+            acceso = dat_elim;
+        }else if (action.equalsIgnoreCase("eliminar")){
+            int id_estud = Integer.parseInt(request.getParameter("idestud"));
+            int id_asign = Integer.parseInt(request.getParameter("id_asign"));
             
             c.setId_estud(id_estud);
             c.setId_asign(id_asign);
             
-            dao.add(c);
-            acceso=estud;
+            dao.eliminar(id_estud, id_asign);
+            acceso = listar_estud;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

@@ -32,7 +32,7 @@ public class EstudianteDAO implements CRUD_Estudiante {
     @Override
     public List listar() {
         ArrayList<Estudiante> list = new ArrayList<>();
-        String sql = "SELECT estudiantes.id, nombre, apell, cursos.codigo FROM estudiantes INNER JOIN cursos on estudiantes.id_curso = cursos.id;";
+        String sql = "SELECT estudiantes.id, nombre, apell, id_curso, cursos.codigo FROM estudiantes LEFT JOIN cursos on estudiantes.id_curso = cursos.id";
         try {
             con = cn.getConection();
             st = con.createStatement();
@@ -42,7 +42,13 @@ public class EstudianteDAO implements CRUD_Estudiante {
                 estud.setId(rs.getInt("estudiantes.id"));
                 estud.setNombre(rs.getString("nombre"));
                 estud.setApell(rs.getString("apell"));
-                estud.setNomb_curso(rs.getString("cursos.codigo"));
+                String curso = rs.getString("cursos.codigo");
+
+                if (curso == null) {
+                    estud.setNomb_curso("Aún no asignado");
+                } else {
+                    estud.setNomb_curso(rs.getString("cursos.codigo"));
+                }
 
                 list.add(estud);
             }
@@ -54,7 +60,7 @@ public class EstudianteDAO implements CRUD_Estudiante {
 
     @Override
     public Estudiante list(int id) {
-        String sql = "SELECT estudiantes.id, estudiantes.nombre, estudiantes.apell, estudiantes.num_doc, estudiantes.fech_nac, estudiantes.ciud_nac, estudiantes.barr_res, estudiantes.direc_res, estudiantes.edad, estudiantes.genero, estudiantes.rh, estudiantes.eps, estudiantes.telefono, estudiantes.correo, estudiantes.nomb_acud, estudiantes.apell_acu, estudiantes.usuario, estudiantes.contras, estudiantes.id_curso, cursos.codigo FROM estudiantes INNER JOIN cursos ON estudiantes.id_curso = cursos.id WHERE estudiantes.id=" + id;
+        String sql = "SELECT estudiantes.id, estudiantes.nombre, estudiantes.apell, estudiantes.num_doc, estudiantes.fech_nac, estudiantes.ciud_nac, estudiantes.barr_res, estudiantes.direc_res, estudiantes.edad, estudiantes.genero, estudiantes.rh, estudiantes.eps, estudiantes.telefono, estudiantes.correo, estudiantes.nomb_acud, estudiantes.apell_acu, estudiantes.usuario, estudiantes.contras, estudiantes.id_curso, cursos.codigo FROM estudiantes INNER JOIN cursos ON cursos.id = estudiantes.id_curso WHERE estudiantes.id="+id;
         try {
             con = cn.getConection();
             st = con.createStatement();
@@ -79,8 +85,22 @@ public class EstudianteDAO implements CRUD_Estudiante {
                 e.setApell_acu(rs.getString("estudiantes.apell_acu"));
                 e.setUsuario(rs.getString("estudiantes.usuario"));
                 e.setContras(rs.getString("estudiantes.contras"));
-                e.setId_curso(rs.getInt("estudiantes.id_curso"));
-                e.setNomb_curso(rs.getString("cursos.codigo"));
+                
+                String curso = rs.getString("estudiantes.id_curso");
+                String nom_curso = rs.getString("cursos.codigo");    
+                
+                if(curso==null){
+                    e.setId_curso(0);
+                }else{
+                    e.setId_curso(rs.getInt("estudiantes.id_curso"));
+                }
+                
+                if(nom_curso==null){
+                    e.setNomb_curso("Ninguno");
+                }else{
+                    e.setNomb_curso(rs.getString("cursos.codigo"));
+                }
+                
             }
 
         } catch (SQLException ex) {
@@ -122,7 +142,15 @@ public class EstudianteDAO implements CRUD_Estudiante {
 
     @Override
     public boolean eliminar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "DELETE FROM estudiantes WHERE id="+id;
+        try{
+            con=cn.getConection();
+            st=con.createStatement();
+            st.executeUpdate(sql);        
+        }catch (Exception e) {
+
+        }
+        return false;
     }
 
 }

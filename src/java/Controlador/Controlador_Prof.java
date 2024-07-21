@@ -31,6 +31,7 @@ public class Controlador_Prof extends HttpServlet {
     String listar = "vistas/profesor/listar.jsp";
     String add = "vistas/profesor/agregar.jsp";
     String editar = "vistas/profesor/editar.jsp";
+    String dat_elim = "vistas/profesor/eliminar.jsp";
     Profesor p = new Profesor();
     ProfesorDAO dao = new ProfesorDAO();
 
@@ -156,7 +157,7 @@ public class Controlador_Prof extends HttpServlet {
             String num_lic = request.getParameter("txtNumLic");
             String usuario = request.getParameter("txtUsuario");
             String contras = request.getParameter("txtContras");
-            
+
             p.setId(id);
             p.setNombre(nombre);
             p.setApell(apell);
@@ -174,10 +175,18 @@ public class Controlador_Prof extends HttpServlet {
             p.setNum_lic(num_lic);
             p.setUsuario(usuario);
             p.setContras(contras);
-            
+
             dao.edit(p);
-            acceso=listar;
-        }
+            acceso = listar;
+        } else if (action.equalsIgnoreCase("dat_elim")) {
+            request.setAttribute("idprof", request.getParameter("id"));
+            acceso = dat_elim;
+        }else if (action.equalsIgnoreCase("eliminar")){
+                int id=Integer.parseInt(request.getParameter("id"));
+                p.setId(id);
+                dao.eliminar(id);
+                acceso=listar;
+            }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
     }

@@ -31,6 +31,7 @@ public class Controlador_Estud extends HttpServlet {
     String listar = "vistas/estudiante/listar.jsp";
     String add = "vistas/estudiante/agregar.jsp";
     String editar = "vistas/estudiante/editar.jsp";
+    String dat_elim = "vistas/estudiante/eliminar.jsp";
     Estudiante e = new Estudiante();
     EstudianteDAO dao = new EstudianteDAO();
 
@@ -143,7 +144,7 @@ public class Controlador_Estud extends HttpServlet {
             request.setAttribute("idestud", request.getParameter("id"));
             acceso = editar;
         } else if (action.equalsIgnoreCase("Actualizar")) {
-            
+
             int id = Integer.parseInt(request.getParameter("txtId"));
             String nombre = request.getParameter("txtNomb");
             String apell = request.getParameter("txtApell");
@@ -163,7 +164,7 @@ public class Controlador_Estud extends HttpServlet {
             String correo = request.getParameter("txtCorreo");
             String usuario = request.getParameter("txtUsuario");
             String contras = request.getParameter("txtContras");
-            
+
             e.setId(id);
             e.setNombre(nombre);
             e.setApell(apell);
@@ -183,10 +184,18 @@ public class Controlador_Estud extends HttpServlet {
             e.setUsuario(usuario);
             e.setContras(contras);
             e.setId_curso(id_curso);
-            
+
             dao.edit(e);
             acceso = listar;
-        }
+        } else if (action.equalsIgnoreCase("dat_elim")) {
+            request.setAttribute("idestud", request.getParameter("id"));
+            acceso = dat_elim;
+        }else if (action.equalsIgnoreCase("eliminar")){
+                int id=Integer.parseInt(request.getParameter("id"));
+                e.setId(id);
+                dao.eliminar(id);
+                acceso=listar;
+            }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
     }

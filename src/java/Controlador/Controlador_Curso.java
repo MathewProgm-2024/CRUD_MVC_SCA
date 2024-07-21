@@ -24,6 +24,7 @@ public class Controlador_Curso extends HttpServlet {
     String listar="vistas/curso/listar.jsp";
     String add="vistas/curso/agregar.jsp";
     String editar="vistas/curso/editar.jsp";
+    String dat_elim = "vistas/curso/eliminar.jsp";
     Curso c = new Curso();
     CursoDAO dao = new CursoDAO();
 
@@ -91,6 +92,14 @@ public class Controlador_Curso extends HttpServlet {
                 c.setCant_estud(0);
                 
                 dao.edit(c);
+                acceso=listar;
+            }else if(action.equalsIgnoreCase("dat_elim")){
+                request.setAttribute("idcur",request.getParameter("id"));
+                acceso=dat_elim; 
+            }else if (action.equalsIgnoreCase("eliminar")){
+                int id=Integer.parseInt(request.getParameter("id"));
+                c.setId(id);
+                dao.eliminar(id);
                 acceso=listar;
             }
             RequestDispatcher vista=request.getRequestDispatcher(acceso);

@@ -108,7 +108,7 @@
                         <a href="Controlador_Asign?accion=editar&id=<%=asign.getId()%>">Editar</a>
                     </td>
                     <td>
-                        <a href="">Eliminar</a>
+                        <a href="Controlador_Asign?accion=dat_elim&id=<%=asign.getId()%>">Eliminar</a>
                     </td>
                 </tr>
                 <%}%>
