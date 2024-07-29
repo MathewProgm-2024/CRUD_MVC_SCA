@@ -26,10 +26,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <title>Agregar asignatura</title>
+        <title>Agregar asignatura</title>        
     </head>
 
-    <body>
+    <body>        
         <nav>
             <div>
                 <header>
@@ -51,12 +51,12 @@
                 <form class="row" action="Controlador_Asign">
                     <div class="col-3">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" name="txtNomb" class="form-control" id="nombre" placeholder="Nombre">
+                        <input type="text" name="txtNomb" class="form-control" id="nombre" placeholder="Nombre" pattern="[A-Za-z]{3,15}" maxlength="15">                        
                     </div>
                     <div class="col-3">
                         <label for="grado" class="form-label">Grado</label>
                         <select class="form-select" name="txtGrado" id="grado">
-                            <option selected>Seleccione</option>
+                            <option selected disabled value="">Seleccione</option>
                             <option value="Primero">Primero</option>
                             <option value="Segundo">Segundo</option>
                             <option value="Tercero">Tercero</option>
@@ -72,13 +72,13 @@
                     <div class="col-3">
                         <label for="profe" class="form-label">Profesor</label>
                         <select class="form-select" name="txtProf" id="profe">
-                            <option selected>Seleccione</option>
+                            <option selected disabled value="">Seleccione</option>
                             <%
                                 ProfesorDAO dao = new ProfesorDAO();
                                 List<Profesor> list = dao.listar();
                                 Iterator<Profesor> iter = list.iterator();
                                 Profesor prof = null;
-                                
+
                                 while (iter.hasNext()) {
                                     prof = iter.next();
 
@@ -87,10 +87,10 @@
                             <%}%>
                         </select>
                     </div>
-                    <div class="row">
+                    <div class="row">                        
                         <div class="col-3">
                             <button type="submit" name="accion" value="Agregar"><i class="bi bi-floppy2-fill"></i> Agregar</button>
-                        </div>
+                        </div>                        
                         <div class="col-2">
                             <button type="reset">Limpiar campos</button>
                         </div>
@@ -99,5 +99,6 @@
             </div>
         </div>
     </body>
+    
 
 </html>

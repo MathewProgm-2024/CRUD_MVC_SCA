@@ -114,9 +114,9 @@ header {
 .row {
     justify-content: center;
     align-content: center;
-    align-items: self-end;
-    padding-right: 30%;
+    align-items: end;
     padding-left: 30%;
+    padding-right: 30%;
     padding-bottom: 1%;
 }
 
@@ -135,13 +135,13 @@ header {
 
 .col-3{
     width: auto;
-    margin: 0px auto;
+    margin: auto;
     padding-top: 2%;
 }
 
 .col-2{
     width: auto;
-    margin: 0px auto;
+    margin: auto;
     padding-top: 2%;
 }
 
@@ -174,8 +174,4 @@ header {
     color: #748B75;
     border-color: #748B75;
 }
-
-#mycheck {
-    accent-color: #84C318;
-  }
 

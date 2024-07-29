@@ -138,7 +138,7 @@ public class AsignaturaDAO implements CRUD_Asignatura {
     @Override
     public List listar_estud(int id) {
         ArrayList<Asignatura> list = new ArrayList<>();
-        String sql = "SELECT calificaciones.id, id_asign, id_estud, asignaturas.nombre, profesores.nombre, profesores.apell, asignaturas.grado FROM calificaciones LEFT JOIN asignaturas on asignaturas.id = calificaciones.id_asign LEFT JOIN profesores on profesores.id = asignaturas.id_prof LEFT JOIN estudiantes on estudiantes.id = calificaciones.id_estud LEFT JOIN cursos on cursos.id = estudiantes.id_curso WHERE estudiantes.id=" + id;
+        String sql = "SELECT calificaciones.id, id_asign, id_estud, periodo, asignaturas.nombre, profesores.nombre, profesores.apell, asignaturas.grado FROM calificaciones LEFT JOIN asignaturas on asignaturas.id = calificaciones.id_asign LEFT JOIN profesores on profesores.id = asignaturas.id_prof LEFT JOIN estudiantes on estudiantes.id = calificaciones.id_estud LEFT JOIN cursos on cursos.id = estudiantes.id_curso WHERE estudiantes.id=" + id;
         try {
             con = cn.getConection();
             st = con.createStatement();
@@ -148,6 +148,7 @@ public class AsignaturaDAO implements CRUD_Asignatura {
                 asign.setId(rs.getInt("id_asign"));
                 asign.setNombre(rs.getString("asignaturas.nombre"));
                 asign.setGrado(rs.getString("grado"));
+                asign.setPeriodo(rs.getString("periodo"));
                 
                 String nomb_prof = rs.getString("profesores.nombre");
                 String apell_prof = rs.getString("profesores.apell");

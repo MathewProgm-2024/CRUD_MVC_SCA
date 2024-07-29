@@ -15,6 +15,7 @@ public class Asignatura {
     int id_prof;
     String nomb_prof;
     String apell_prof;
+    String periodo;
 
     public Asignatura() {
     }
@@ -26,6 +27,7 @@ public class Asignatura {
         this.id_prof = id_prof;
         this.nomb_prof = nomb_prof;
         this.apell_prof = apell_prof;
+        this.periodo = periodo;
     }
 
     public int getId() {
@@ -74,6 +76,14 @@ public class Asignatura {
 
     public void setApell_prof(String apell_prof) {
         this.apell_prof = apell_prof;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
     }
 
     
