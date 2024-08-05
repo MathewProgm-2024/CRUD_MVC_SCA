@@ -1,7 +1,7 @@
 <%-- 
-    Document   : eliminar_calif_estud
+    Document   : Eliminar delegacion de la asignatura del estudiante
     Created on : 21/07/2024, 3:00:35 p. m.
-    Author     : USUARIO
+    Author     : Mateo Rodriguez C. - 2721519
 --%>
 
 <%@page import="java.util.Iterator"%>
@@ -43,8 +43,8 @@
             <div class="contenedor">
                 <%
                     EstudianteDAO daoe = new EstudianteDAO();
-                    int id = Integer.parseInt((String) request.getAttribute("idestud"));
-                    Estudiante e = (Estudiante) daoe.list(id);
+                    int id_estud = Integer.parseInt((String) request.getAttribute("idestud"));
+                    Estudiante e = (Estudiante) daoe.list(id_estud);
                 %>
                 <h1>Eliminar calificaciones del estudiante <%=e.getNombre()%> <%=e.getApell()%></h1>
                 <h5>AVISO: confirme que su selección sea correcta, ya que al eliminar estos datos, eliminará las calificaciones <br> de todos los periodos en la asignatura para la estudiante <%=e.getNombre()%> <%=e.getApell()%></h5>
@@ -62,7 +62,8 @@
                 </thead>
                 <%
                     AsignaturaDAO dao = new AsignaturaDAO();
-                    List<Asignatura> list = dao.listar_estud(id);
+                    int id_asign = Integer.parseInt((String) request.getAttribute("idasign"));
+                    List<Asignatura> list = dao.list_detal_calif(id_estud,id_asign);
                     Iterator<Asignatura> iter = list.iterator();
                     Asignatura asign = null;
                     int i = 0;

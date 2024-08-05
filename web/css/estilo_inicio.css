@@ -9,6 +9,7 @@ header{
     align-items: center;
     padding: 10px;
 }
+
 .logo{
     display: flex;
 }
@@ -22,7 +23,7 @@ header{
     font-size: 20px;
 }
 
-.ingreso button{
+.ingreso a{
     background-color: #84C318;
     font-size: 20px;
     height: 40px;
@@ -31,7 +32,7 @@ header{
     justify-content: space-between;
 }
 
-.ingreso button:hover{
+.ingreso a:hover{
     background-color: black;
     color:#84C318;
 }
@@ -44,6 +45,40 @@ header{
 
 .navbar a:hover{
     color:#84C318;
+}
+
+.nav-link.active {
+    background-color: #84C318;
+}
+
+#perfil{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 50px;
+    padding-left: 50px;
+}
+
+#perfil i{
+    color: #84C318;
+    font-size: 30px;
+}
+
+#perfil a {
+    color: #503D42;
+    text-decoration: none;    
+}
+
+#perfil a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+summary{
+    color: #84C318;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .escudo img{
@@ -99,3 +134,4 @@ footer{
     display: flex;
     background-color: #92AD94;
 }
+

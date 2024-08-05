@@ -1,7 +1,7 @@
 <%-- 
-    Document   : eliminar
+    Document   : Eliminar registro del estudiante
     Created on : 20/07/2024, 7:57:42 p. m.
-    Author     : USUARIO
+    Author     : Mateo Rodriguez C. - 2721519
 --%>
 
 <%@page import="ModeloDAO.EstudianteDAO"%>

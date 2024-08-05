@@ -32,6 +32,10 @@
         <servlet-name>Controlador_Prof</servlet-name>
         <servlet-class>Controlador.Controlador_Prof</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controlador_Usuario</servlet-name>
+        <servlet-class>Controlador.Controlador_Usuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador_Curso</servlet-name>
         <url-pattern>/Controlador_Curso</url-pattern>
@@ -64,4 +68,9 @@
         <servlet-name>Controlador_Prof</servlet-name>
         <url-pattern>/Controlador_Prof</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controlador_Usuario</servlet-name>
+        <url-pattern>/Controlador_Usuario</url-pattern>
+    </servlet-mapping>        
 </web-app>
+

@@ -1,7 +1,7 @@
 <%-- 
     Document   : asign_estud
     Created on : 17/07/2024, 3:54:16 p. m.
-    Author     : USUARIO
+    Author     : Mateo Rodriguez C. - 2721519
 --%>
 
 <%@page import="Modelo.Estudiante"%>
@@ -57,7 +57,6 @@
                     <label for="buscar" class="form-label">Buscar Asignatura <i class="bi bi-search"></i></label>
                     <input type="text" class="form-control" id="buscar" placeholder="Buscar" onkeyup="filtrar()">
                 </div>
-
             </form>
         </div>
         <div class="tabla">
@@ -94,7 +93,6 @@
                 </tbody>
             </table>
         </div>
-    </div>
 </body>
 
 </html>

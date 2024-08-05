@@ -23,25 +23,22 @@
         <div>
             <header>
                 <div class="ingreso">
-                    <button type="button"><i class="bi bi-person"></i>Ingresa</button>
+                    <a href="identificar.jsp" class="btn"><i class="bi bi-person"></i>Ingresa</a>
                 </div>
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a href="" class="nav-link">Inicio</a>
+                                <a href="" class="nav-link active">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a href="Controlador_Asign?accion=listar" class="nav-link">Asignaturas</a>
+                                <a href="index_admin.jsp" class="nav-link">Administrador</a>
                             </li>
                             <li class="nav-item">
-                                <a href="Controlador_Curso?accion=listar" class="nav-link active">Cursos</a>
+                                <a href="index_prof.jsp" class="nav-link">Profesor</a>
                             </li>
                             <li class="nav-item">
-                                <a href="Controlador_Estud?accion=listar" class="nav-link">Estudiantes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="Controlador_Prof?accion=listar" class="nav-link">Profesores</a>
+                                <a href="index_estud.jsp" class="nav-link">Estudiante</a>
                             </li>
                         </ul>
                         <div class="logo">

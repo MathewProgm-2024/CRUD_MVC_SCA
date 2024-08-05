@@ -32,6 +32,7 @@ public class Estudiante {
     String contras;
     int id_curso;
     String nomb_curso;
+    String cargo;
     
     public static String cadenaAleatoria(int longitud) {
         // El banco de caracteres
@@ -75,6 +76,7 @@ public class Estudiante {
         this.contras = contras;
         this.id_curso = id_curso;
         this.nomb_curso = nomb_curso;
+        this.cargo = cargo;
     }
 
     public int getId() {
@@ -235,6 +237,14 @@ public class Estudiante {
 
     public void setNomb_curso(String nomb_curso) {
         this.nomb_curso = nomb_curso;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
     
     

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : editar
+    Document   : Modificar registros del estudiante
     Created on : 11/07/2024, 2:38:53 p. m.
-    Author     : USUARIO
+    Author     : Mateo Rodriguez C. - 2721519
 --%>
 
 <%@page import="Modelo.Estudiante"%>
@@ -24,7 +24,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-        <title>Agregar estudiante</title>
+        <title>Modificar estudiante</title>
     </head>
 
     <body>

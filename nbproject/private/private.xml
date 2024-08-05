@@ -5,13 +5,14 @@
         <group>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/css/estilo_ver_info.css</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/index.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/Controlador/Controlador_CalifEstud.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/Controlador/Controlador_Asign.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/vistas/curso/listar.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/vistas/asignaturas/asign_estud.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/vistas/calificaciones/cal_curso.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/Controlador/Controlador_CalifCurs.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/vistas/calificaciones/agreg_calif_estud.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/index_admin.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/index_estud.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/identificar.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/ModeloDAO/UsuarioDAO.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/web/index_prof.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/Modelo/Estudiante.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/CRUD_MVC_SCA/src/java/Controlador/Controlador_Usuario.java</file>
         </group>
     </open-files>
 </project-private>

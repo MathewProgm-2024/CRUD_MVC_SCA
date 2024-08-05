@@ -58,6 +58,16 @@ header {
 }
 
 .perfil a {
+    color: #503D42;
+    text-decoration: none;    
+}
+
+.perfil a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+summary{
     color: #84C318;
     text-decoration: none;
     font-weight: bold;
@@ -116,7 +126,7 @@ header {
     align-content: center;
     align-items: end;
     padding-left: 30%;
-    padding-right: 30%;
+    margin: auto;
     padding-bottom: 1%;
 }
 
@@ -135,13 +145,13 @@ header {
 
 .col-3{
     width: auto;
-    margin: auto;
+    margin: 0px auto;
     padding-top: 2%;
 }
 
 .col-2{
     width: auto;
-    margin: auto;
+    margin: 0px auto;
     padding-top: 2%;
 }
 

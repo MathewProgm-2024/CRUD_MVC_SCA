@@ -1,7 +1,7 @@
 <%-- 
-    Document   : agreg_calif_curso
+    Document   : Delegar asignatura al estudiante.
     Created on : 17/07/2024, 3:49:39 p. m.
-    Author     : USUARIO
+    Author     : Mateo Rodriguez C. - 2721519
 --%>
 
 <%@page import="java.util.Iterator"%>
@@ -86,5 +86,4 @@
             </div>
         </div>
     </body>
-
 </html>

@@ -69,16 +69,16 @@ public class AsignaturaDAO implements CRUD_Asignatura {
                 a.setId(rs.getInt("asignaturas.id"));
                 a.setNombre(rs.getString("asignaturas.nombre"));
                 a.setGrado(rs.getString("asignaturas.grado"));
-                
+
                 String id_prof = rs.getString("id_prof");
                 String nomb_prof = rs.getString("profesores.nombre");
                 String apell_prof = rs.getString("profesores.apell");
-                
-                if(id_prof==null && nomb_prof==null && apell_prof==null){
+
+                if (id_prof == null && nomb_prof == null && apell_prof == null) {
                     a.setId_prof(0);
                     a.setNomb_prof("Ninguno");
                     a.setApell_prof("Ninguno");
-                }else{
+                } else {
                     a.setId_prof(rs.getInt("id_prof"));
                     a.setNomb_prof(rs.getString("profesores.nombre"));
                     a.setApell_prof(rs.getString("profesores.apell"));
@@ -124,12 +124,12 @@ public class AsignaturaDAO implements CRUD_Asignatura {
 
     @Override
     public boolean eliminar(int id) {
-        String sql = "DELETE FROM asignaturas WHERE id="+id;
-        try{
-            con=cn.getConection();
-            st=con.createStatement();
-            st.executeUpdate(sql);        
-        }catch (Exception e) {
+        String sql = "DELETE FROM asignaturas WHERE id=" + id;
+        try {
+            con = cn.getConection();
+            st = con.createStatement();
+            st.executeUpdate(sql);
+        } catch (Exception e) {
 
         }
         return false;
@@ -149,7 +149,40 @@ public class AsignaturaDAO implements CRUD_Asignatura {
                 asign.setNombre(rs.getString("asignaturas.nombre"));
                 asign.setGrado(rs.getString("grado"));
                 asign.setPeriodo(rs.getString("periodo"));
-                
+
+                String nomb_prof = rs.getString("profesores.nombre");
+                String apell_prof = rs.getString("profesores.apell");
+
+                if (nomb_prof == null && apell_prof == null) {
+                    asign.setNomb_prof("No");
+                    asign.setApell_prof("asignado");
+                } else {
+                    asign.setNomb_prof(rs.getString("profesores.nombre"));
+                    asign.setApell_prof(rs.getString("profesores.apell"));
+                }
+                list.add(asign);
+            }
+        } catch (Exception e) {
+
+        }
+        return list;
+    }
+
+    @Override
+    public List list_detal_calif(int id_estud, int id_asign) {
+        ArrayList<Asignatura> list = new ArrayList<>();
+        String sql = "SELECT calificaciones.id, id_asign, id_estud, periodo, asignaturas.nombre, profesores.nombre, profesores.apell, asignaturas.grado FROM calificaciones LEFT JOIN asignaturas on asignaturas.id = calificaciones.id_asign LEFT JOIN profesores on profesores.id = asignaturas.id_prof LEFT JOIN estudiantes on estudiantes.id = calificaciones.id_estud LEFT JOIN cursos on cursos.id = estudiantes.id_curso WHERE id_estud=" + id_estud + " and id_asign=" + id_asign;
+        try {
+            con = cn.getConection();
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                Asignatura asign = new Asignatura();
+                asign.setId(rs.getInt("id_asign"));
+                asign.setNombre(rs.getString("asignaturas.nombre"));
+                asign.setGrado(rs.getString("grado"));
+                asign.setPeriodo(rs.getString("periodo"));
+
                 String nomb_prof = rs.getString("profesores.nombre");
                 String apell_prof = rs.getString("profesores.apell");
 

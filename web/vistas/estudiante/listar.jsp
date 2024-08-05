@@ -1,7 +1,7 @@
 <%-- 
-    Document   : listar
+    Document   : Listar estudiantes registrados
     Created on : 11/07/2024, 2:38:58 p. m.
-    Author     : USUARIO
+    Author     : Mateo Rodriguez C. - 2721519
 --%>
 
 <%@page import="java.util.Iterator"%>
@@ -37,7 +37,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a href="index.jsp" class="nav-link">Inicio</a>
+                                <a href="index_admin.jsp" class="nav-link">Inicio</a>
                             </li>
                             <li class="nav-item">
                                 <a href="Controlador_Asign?accion=listar" class="nav-link">Asignaturas</a>
