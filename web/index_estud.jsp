@@ -27,7 +27,7 @@
                         <section> 
                             <i class="bi bi-person-badge"></i>                     
                             <details>
-                                <summary>${estudiante.getCargo()}</summary>
+                                <summary>Estudiante</summary>
                                 <a href="" id="opcion">Mis datos</a><br>
                                 <a href="" id="opcion">Cerrar sesión</a>                         
                             </details>

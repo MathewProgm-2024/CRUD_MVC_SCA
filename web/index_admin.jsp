@@ -6,9 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%
-    if(session.getAttribute("administrador") != null){
-%>
 <!doctype html>
 <html lang="en">
 
@@ -30,9 +27,9 @@
                         <section> 
                             <i class="bi bi-person-badge"></i>                     
                             <details>
-                                <summary>${usuario.cargo}</summary>
+                                <summary>Administrador</summary>
                                 <a href="" id="opcion">Mis datos</a><br>
-                                <a href="Controlador_Usuario?accion=cerrar" id="opcion">Cerrar sesión</a>                         
+                                <a href="identificar.jsp" id="opcion">Cerrar sesión</a>                         
                             </details>
                         </section>
                     </div>                    
@@ -98,8 +95,3 @@
     </body>
 
 </html>
-<%
-    }else{
-    response.sendRedirect("identificar.jsp");
-}
-%>

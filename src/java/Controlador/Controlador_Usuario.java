@@ -82,44 +82,6 @@ public class Controlador_Usuario extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private void verificar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        HttpSession sesion;
-        UsuarioDAO dao;
-        Usuario usuario;
-        usuario = this.ObtenerUsuario(request);
-        dao = new UsuarioDAO();
-        usuario = dao.identificar(usuario);
-        if(usuario != null && usuario.getCargo().equals("administrador")){
-            sesion = request.getSession();
-            sesion.setAttribute("administrador", usuario);
-            this.getServletConfig().getServletContext().getRequestDispatcher("index_admin.jsp").forward(request, response);
-        }else if(usuario != null && usuario.getCargo().equals("profesor")){
-            sesion = request.getSession();
-            sesion.setAttribute("profesor", usuario);
-            this.getServletConfig().getServletContext().getRequestDispatcher("index_prof.jsp").forward(request, response);
-        }else if(usuario != null && usuario.getCargo().equals("estudiante")){
-            sesion = request.getSession();
-            sesion.setAttribute("estudiante", usuario);
-            request.getRequestDispatcher("index_estud.jsp").forward(request, response);
-        }else{
-            request.setAttribute("msje", "Credenciales incorrectas");
-            request.getRequestDispatcher("identificar.jsp").forward(request, response);
-        }
     }
 
-    private void cerrar_sesion(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        HttpSession sesion = request.getSession();
-        sesion.setAttribute("usuario", null);
-        sesion.invalidate();
-        response.sendRedirect("identificar.jsp");
-    }
-
-    private Usuario ObtenerUsuario(HttpServletRequest request) {
-        Usuario u = new Usuario();
-        u.setNomb_usuario(request.getParameter("txtUsu"));
-        u.setContras(request.getParameter("txtContras"));
-        return u;
-    }
-
-}
+   

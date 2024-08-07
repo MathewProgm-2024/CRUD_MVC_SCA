@@ -22,8 +22,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-        <script src="/js/controlador_curso.js"></script>
-        <script src="/js/controlador_period.js"></script>
+        <script src="/js/controlador_curso.js"></script>   
         <title>Cursos</title>
     </head>
 
@@ -32,7 +31,14 @@
             <div>
                 <header>
                     <div class="perfil">
-                        <a href=""><i class="bi bi-person-badge"></i><br>Administrador</a>
+                        <section> 
+                            <i class="bi bi-person-badge"></i>                     
+                            <details>
+                                <summary>Administrador</summary>
+                                <a href="" id="opcion">Mis datos</a><br>
+                                <a href="identificar.jsp" id="opcion">Cerrar sesión</a>                         
+                            </details>
+                        </section>
                     </div>
                     <nav class="navbar navbar-expand-lg bg-body-tertiary">
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
